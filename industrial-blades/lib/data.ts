@@ -1,10 +1,7 @@
-// SOLID: Interface segregation - her interface'in tek sorumluluğu var
-export interface SubCategory {
-  id: string
-  name: string
-  slug: string
-}
+// Import yeni tip tanımlarını
+import { Category as CategoryType, SubCategory, Product as ProductType } from './types'
 
+// Legacy types - geriye dönük uyumluluk için
 export interface ProductCategory {
   id: string
   name: string
@@ -319,36 +316,56 @@ export const productGroups: ProductGroup[] = [
   }
 ]
 
+// Gerçek kategoriler - Temiz mimari: 3 ana kategori
 export const categories: Category[] = [
   {
-    id: '1',
-    name: 'Endüstriyel Bıçaklar',
-    slug: 'endustriyel-bicaklar',
-    image: 'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80',
-    description: 'Yüksek performanslı endüstriyel kesim bıçakları',
-    subcategories: ['Düz Bıçaklar', 'Testere Bıçakları', 'Özel Form Bıçaklar']
+    id: 'sanayi-jiletleri',
+    name: 'Sanayi Jiletleri',
+    slug: 'sanayi-jiletleri',
+    image: '/images/categories/sanayi-jiletleri.jpg',
+    description: 'Endüstriyel kullanım için profesyonel sanayi jiletleri',
+    subcategories: [
+      'OK Bıçaklar',
+      '3 Delikli Dilme',
+      'Slotted Dilme',
+      'Trapez Bıçaklar',
+      'Kanca Bıçaklar',
+      'Falçata Bıçaklar',
+      'Hobi Jiletleri',
+      'Dairesel Jiletler'
+    ]
   },
   {
-    id: '2',
+    id: 'makina-bicaklari',
     name: 'Makina Bıçakları',
     slug: 'makina-bicaklari',
-    image: 'https://images.unsplash.com/photo-1503389152951-9f343605f61e?auto=format&fit=crop&w=1200&q=80',
-    description: 'Otomatik makinalar için özel bıçaklar',
-    subcategories: ['Kağıt Kesim', 'Plastik Kesim', 'Metal Kesim']
+    image: '/images/categories/makina-bicaklari.jpg',
+    description: 'Endüstriyel makinalar için özel üretim bıçaklar',
+    subcategories: [
+      'Termoform Vakum',
+      'Dairesel Dilme',
+      'Geri Dönüşüm',
+      'Kutu Kapama',
+      'Döner Kesim',
+      'Log-Saw Bıçakları'
+    ]
   },
   {
-    id: '3',
-    name: 'Gıda Bıçakları',
-    slug: 'gida-bicaklari',
-    image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80',
-    description: 'Hijyenik gıda işleme bıçakları',
-  },
-  {
-    id: '4',
-    name: 'Özel Üretim',
-    slug: 'ozel-uretim',
-    image: 'https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1200&q=80',
-    description: 'İhtiyacınıza özel tasarım bıçaklar',
+    id: 'is-guvenligi-el-bicaklari',
+    name: 'İş Güvenliği & El Bıçakları',
+    slug: 'is-guvenligi-el-bicaklari',
+    image: '/images/categories/is-guvenligi-el-bicaklari.jpg',
+    description: 'İş güvenliği standartlarına uygun profesyonel el bıçakları ve kesici aletler',
+    subcategories: [
+      'Otomatik Geri Çekilebilir',
+      'Sabit Uçlu Bıçaklar',
+      'Güvenlik Bıçakları',
+      'Maket Bıçakları',
+      'Çapak Alma & Hobi',
+      'OLFA Dairesel',
+      'OLFA Falçata',
+      'OLFA İş Güvenliği'
+    ]
   },
 ]
 

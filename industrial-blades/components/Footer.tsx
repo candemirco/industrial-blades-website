@@ -14,13 +14,9 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
-            <Image
-              src="/images/logo.png"
-              alt="Alya Industrial Blades"
-              width={140}
-              height={44}
-              className="mb-6"
-            />
+            <h3 className="text-xl font-semibold text-white mb-6">
+              Alya Tekstil Sanayi Ticaret Ltd.Şti.
+            </h3>
             <p className="text-steel-400 mb-6">
               Sheffield kalitesinde endüstriyel kesici bıçaklar. Profesyonel çözümler, mükemmel performans.
             </p>

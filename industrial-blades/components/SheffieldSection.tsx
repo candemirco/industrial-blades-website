@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { Award, Zap, Shield, Clock, ArrowRight } from 'lucide-react'
+import { Award, Zap, Shield, Clock, ArrowRight, CheckCircle } from 'lucide-react'
 
 export default function SheffieldSection() {
   const features = [
@@ -28,6 +28,13 @@ export default function SheffieldSection() {
     }
   ]
 
+  const qualityStandards = [
+    { name: 'FDA Uyumlu', desc: 'Gıda güvenliği standartları' },
+    { name: 'USDA Onaylı', desc: 'ABD tarım bakanlığı sertifikası' },
+    { name: 'ISO 9001:2015', desc: 'Kalite yönetim sistemi' },
+    { name: 'Made in Sheffield', desc: 'Dünya standartlarında üretim' }
+  ]
+
   return (
     <section className="py-20 bg-steel-900 text-white relative overflow-hidden">
       {/* Background Pattern */}
@@ -42,7 +49,7 @@ export default function SheffieldSection() {
           {/* Left: Content */}
           <div>
             <div className="inline-block px-4 py-2 bg-primary-600 text-white text-sm font-semibold rounded-full mb-6">
-              Made in Sheffield
+              Quality Recognised Worldwide
             </div>
             
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
@@ -51,8 +58,8 @@ export default function SheffieldSection() {
             
             <p className="text-lg text-steel-300 mb-8">
               Sheffield, yüzyıllardır dünyanın en kaliteli çelik ve bıçak üretim merkezi olarak bilinir. 
-              Biz de bu geleneği sürdürerek, endüstriyel kesim ihtiyaçlarınız için Sheffield standardında 
-              çelik kullanan bıçaklar üretiyoruz.
+              1910&apos;dan bu yana İngiltere&apos;nin kalp merkezinde, precision engineering ile üretilen 
+              endüstriyel bıçaklar, gıda güvenliği standartlarına tam uyumluluk ile sizlere sunuluyor.
             </p>
 
             {/* Features Grid */}
@@ -68,6 +75,25 @@ export default function SheffieldSection() {
                   </div>
                 </div>
               ))}
+            </div>
+
+            {/* Quality Standards */}
+            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 mb-8 border border-white/10">
+              <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+                <Shield className="w-5 h-5 text-primary-400" />
+                Kalite Standartları
+              </h3>
+              <div className="grid grid-cols-2 gap-3">
+                {qualityStandards.map((standard) => (
+                  <div key={standard.name} className="flex items-start gap-2">
+                    <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <div className="font-semibold text-white">{standard.name}</div>
+                      <div className="text-xs text-steel-400">{standard.desc}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
 
             <Link
@@ -88,11 +114,12 @@ export default function SheffieldSection() {
                 fill
                 className="object-cover"
               />
+              
               {/* Stats Overlay */}
               <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-steel-900 to-transparent">
                 <div className="grid grid-cols-3 gap-4">
                   <div className="text-center">
-                    <div className="text-3xl font-bold text-white mb-1">100+</div>
+                    <div className="text-3xl font-bold text-white mb-1">115+</div>
                     <div className="text-sm text-steel-300">Yıllık Deneyim</div>
                   </div>
                   <div className="text-center">
@@ -104,15 +131,6 @@ export default function SheffieldSection() {
                     <div className="text-sm text-steel-300">Mutlu Müşteri</div>
                   </div>
                 </div>
-              </div>
-            </div>
-
-            {/* Floating Badge */}
-            <div className="absolute -top-4 -right-4 w-32 h-32 bg-yellow-500 rounded-full flex items-center justify-center shadow-2xl animate-pulse">
-              <div className="text-center">
-                <Award className="w-12 h-12 text-white mx-auto mb-1" />
-                <div className="text-xs font-bold text-white">Sheffield</div>
-                <div className="text-xs text-white">Quality</div>
               </div>
             </div>
           </div>
