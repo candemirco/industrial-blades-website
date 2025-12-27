@@ -1,0 +1,334 @@
+/**
+ * Alya Bıçak - Ürün Verileri
+ * Single Source of Truth for Products
+ * 
+ * Yeni ürün eklemek için:
+ * 1. PRODUCTS dizisine yeni ürün objesi ekle
+ * 2. categoryId ve subcategoryId'nin doğru olduğundan emin ol
+ */
+
+import { Product } from '../types';
+
+// =============================================================================
+// ÜRÜNLER
+// =============================================================================
+
+export const PRODUCTS: Product[] = [
+  // --- İŞ GÜVENLİĞİ & EL BIÇAKLARI ---
+  {
+    id: 'h006-001-x01',
+    slug: 'h006-001-x01-retro-light-knife',
+    code: 'H006 001 X01',
+    name: 'RETRO LIGHT KNIFE – Döküm Metal El Bıçağı',
+    description: 'RETRO LIGHT KNIFE – Döküm Metal El Bıçağı. İş güvenliği standartlarına uygun, dayanıklı döküm metal gövdeli el bıçağı.',
+    categoryId: 'is-guvenligi-el-bicaklari',
+    subcategoryId: 'sabit-uclu',
+    image: '/images/products/H006-001-X01.jpg',
+    variants: [
+      {
+        id: 'h006-001-x01-standard',
+        sku: 'H006-001-X01',
+        inStock: true,
+      },
+    ],
+    specifications: {
+      material: 'Sheffield Çelik',
+      hardness: 'HRC 58-62',
+    },
+    features: ['Döküm metal gövde', 'Ergonomik tasarım', 'Uzun ömürlü'],
+    applications: ['Genel kesim işleri', 'Ambalaj açma', 'Karton kesimi'],
+    isFeatured: false,
+    isActive: true,
+    order: 1,
+  },
+  {
+    id: 'h008-001-a03',
+    slug: 'h008-001-a03-auto-retract',
+    code: 'H008 001 A03',
+    name: 'AUTO RETRACT – Otomatik Geri Çekilebilir',
+    description: 'AUTO RETRACT – Otomatik Geri Çekilebilir bıçak. Maksimum güvenlik için otomatik geri çekilme mekanizması.',
+    categoryId: 'is-guvenligi-el-bicaklari',
+    subcategoryId: 'oto-geri-cekilebilir',
+    image: '/images/products/H008-001-A03.jpg',
+    variants: [
+      {
+        id: 'h008-001-a03-standard',
+        sku: 'H008-001-A03',
+        inStock: true,
+      },
+    ],
+    specifications: {
+      material: 'Sheffield Çelik',
+      hardness: 'HRC 58-62',
+    },
+    features: ['Otomatik geri çekilme', 'Güvenlik kilidi', 'Ergonomik kavrama'],
+    applications: ['Depo işleri', 'Lojistik', 'Üretim hatları'],
+    certifications: ['CE', 'ISO 9001'],
+    isFeatured: true,
+    isActive: true,
+    order: 2,
+  },
+  {
+    id: 'p1-a',
+    slug: 'p1-a-capak-alma-hobi',
+    code: 'P1-A',
+    name: 'Çapak Alma / Hobi El Bıçağı – Alyan Vidalı',
+    description: 'Alyan vidalı çapak alma / hobi el bıçağı. Hassas işler için ideal.',
+    categoryId: 'is-guvenligi-el-bicaklari',
+    subcategoryId: 'capak-alma-hobi',
+    image: '/images/products/P1-A.jpg',
+    variants: [
+      {
+        id: 'p1-a-standard',
+        sku: 'P1-A',
+        inStock: true,
+      },
+    ],
+    specifications: {
+      material: 'Sheffield Çelik',
+      hardness: 'HRC 58-62',
+    },
+    features: ['Alyan vidalı', 'Hassas kesim', 'Değiştirilebilir uç'],
+    applications: ['Çapak alma', 'Hobi işleri', 'Model yapımı'],
+    isFeatured: false,
+    isActive: true,
+    order: 3,
+  },
+
+  // --- SANAYİ JİLETLERİ ---
+  {
+    id: '3-delikli-jilet-020',
+    slug: '3-delikli-dilme-jileti-020mm',
+    code: '3DJ-020',
+    name: '3 Delikli Dilme Jileti 0.20mm',
+    description: '3 delikli dilme jileti, 0.20mm kalınlık. Endüstriyel dilme makineleri için.',
+    categoryId: 'sanayi-jiletleri',
+    subcategoryId: '3-delikli-dilme',
+    image: '/images/products/3-delikli-jilet.jpg',
+    variants: [
+      {
+        id: '3dj-020-standard',
+        sku: '3DJ-020',
+        thickness: '0.20mm',
+        inStock: true,
+      },
+      {
+        id: '3dj-025-standard',
+        sku: '3DJ-025',
+        thickness: '0.25mm',
+        inStock: true,
+      },
+      {
+        id: '3dj-030-standard',
+        sku: '3DJ-030',
+        thickness: '0.30mm',
+        inStock: true,
+      },
+    ],
+    specifications: {
+      material: 'Sheffield Çelik',
+      hardness: 'HRC 60-62',
+      dimensions: 'Standart 3 delikli',
+    },
+    features: ['Yüksek keskinlik', 'Uzun ömür', '3 delikli montaj'],
+    applications: ['Tekstil kesimi', 'Kağıt kesimi', 'Film kesimi'],
+    isFeatured: true,
+    isActive: true,
+    order: 1,
+  },
+  {
+    id: 'slotted-jilet-020',
+    slug: 'slotted-dilme-jileti-020mm',
+    code: 'SLT-020',
+    name: 'Slotted Dilme Jileti 0.20mm',
+    description: 'Slotted dilme jileti, yüksek performanslı kesim için tasarlanmış.',
+    categoryId: 'sanayi-jiletleri',
+    subcategoryId: 'slotted-dilme',
+    image: '/images/products/slotted-jilet.jpg',
+    variants: [
+      {
+        id: 'slt-020-standard',
+        sku: 'SLT-020',
+        thickness: '0.20mm',
+        inStock: true,
+      },
+      {
+        id: 'slt-025-standard',
+        sku: 'SLT-025',
+        thickness: '0.25mm',
+        inStock: true,
+      },
+    ],
+    specifications: {
+      material: 'Sheffield Çelik',
+      hardness: 'HRC 60-62',
+    },
+    features: ['Slotted tasarım', 'Kolay montaj', 'Yüksek performans'],
+    applications: ['Endüstriyel dilme', 'Hassas kesim'],
+    isFeatured: false,
+    isActive: true,
+    order: 2,
+  },
+  {
+    id: 'trapez-bicak-standart',
+    slug: 'trapez-bicak-standart',
+    code: 'TRP-STD',
+    name: 'Trapez Bıçak - Standart',
+    description: 'Standart trapez bıçak, çok amaçlı kullanım için ideal.',
+    categoryId: 'sanayi-jiletleri',
+    subcategoryId: 'trapez-bicaklar',
+    image: '/images/products/trapez-bicak.jpg',
+    variants: [
+      {
+        id: 'trp-std-standard',
+        sku: 'TRP-STD',
+        inStock: true,
+      },
+      {
+        id: 'trp-hd-standard',
+        sku: 'TRP-HD',
+        material: 'Heavy Duty',
+        inStock: true,
+      },
+    ],
+    specifications: {
+      material: 'Sheffield Çelik',
+      hardness: 'HRC 58-60',
+      dimensions: '61mm x 19mm',
+    },
+    features: ['Evrensel uyum', 'Çift taraflı kesim', 'Ekonomik'],
+    applications: ['Halı kesimi', 'Karton kesimi', 'Genel kullanım'],
+    isFeatured: false,
+    isActive: true,
+    order: 3,
+  },
+
+  // --- MAKİNA BIÇAKLARI ---
+  {
+    id: 'doner-bicak-100mm',
+    slug: 'doner-bicak-100mm',
+    code: 'DNR-100',
+    name: 'Döner Bıçağı 100mm',
+    description: 'Profesyonel kebap döner bıçağı, 100mm çap.',
+    categoryId: 'makina-bicaklari',
+    subcategoryId: 'doner-bicaklari',
+    image: '/images/products/doner-bicak.jpg',
+    variants: [
+      {
+        id: 'dnr-100-standard',
+        sku: 'DNR-100',
+        size: '100mm',
+        inStock: true,
+      },
+      {
+        id: 'dnr-120-standard',
+        sku: 'DNR-120',
+        size: '120mm',
+        inStock: true,
+      },
+    ],
+    specifications: {
+      material: 'Paslanmaz Çelik',
+      hardness: 'HRC 56-58',
+    },
+    features: ['Paslanmaz', 'Keskin kenar', 'Kolay temizlik'],
+    applications: ['Döner kesimi', 'Et kesimi'],
+    certifications: ['FDA', 'USDA'],
+    isFeatured: true,
+    isActive: true,
+    order: 1,
+  },
+  {
+    id: 'vakum-paketleme-bicak',
+    slug: 'vakum-paketleme-bicagi',
+    code: 'VPB-001',
+    name: 'Vakum Paketleme Bıçağı',
+    description: 'Vakum paketleme makineleri için özel tasarlanmış bıçak.',
+    categoryId: 'makina-bicaklari',
+    subcategoryId: 'vakum-paketleme',
+    image: '/images/products/vakum-paketleme.jpg',
+    variants: [
+      {
+        id: 'vpb-001-standard',
+        sku: 'VPB-001',
+        inStock: true,
+      },
+    ],
+    specifications: {
+      material: 'Sheffield Çelik',
+      hardness: 'HRC 58-60',
+    },
+    features: ['Özel profil', 'Uzun ömür', 'Temiz kesim'],
+    applications: ['Vakum paketleme', 'Gıda ambalajı'],
+    isFeatured: false,
+    isActive: true,
+    order: 2,
+  },
+];
+
+// =============================================================================
+// YARDIMCI FONKSİYONLAR
+// =============================================================================
+
+/** Tüm aktif ürünleri döndür */
+export function getAllProducts(): Product[] {
+  return PRODUCTS.filter(p => p.isActive);
+}
+
+/** Öne çıkan ürünleri döndür */
+export function getFeaturedProducts(): Product[] {
+  return PRODUCTS.filter(p => p.isActive && p.isFeatured);
+}
+
+/** ID'ye göre ürün getir */
+export function getProductById(id: string): Product | undefined {
+  return PRODUCTS.find(p => p.id === id);
+}
+
+/** Slug'a göre ürün getir */
+export function getProductBySlug(slug: string): Product | undefined {
+  return PRODUCTS.find(p => p.slug === slug);
+}
+
+/** Kategoriye göre ürünleri getir */
+export function getProductsByCategory(categoryId: string): Product[] {
+  return PRODUCTS.filter(p => p.isActive && p.categoryId === categoryId);
+}
+
+/** Alt kategoriye göre ürünleri getir */
+export function getProductsBySubcategory(subcategoryId: string): Product[] {
+  return PRODUCTS.filter(p => p.isActive && p.subcategoryId === subcategoryId);
+}
+
+/** Kategorideki ürün sayısını getir */
+export function getProductCountByCategory(categoryId: string): number {
+  return PRODUCTS.filter(p => p.isActive && p.categoryId === categoryId).length;
+}
+
+/** Alt kategorideki ürün sayısını getir */
+export function getProductCountBySubcategory(subcategoryId: string): number {
+  return PRODUCTS.filter(p => p.isActive && p.subcategoryId === subcategoryId).length;
+}
+
+/** Arama yap */
+export function searchProducts(query: string): Product[] {
+  const searchTerm = query.toLowerCase().trim();
+  if (!searchTerm) return [];
+  
+  return PRODUCTS.filter(p => 
+    p.isActive && (
+      p.name.toLowerCase().includes(searchTerm) ||
+      p.code.toLowerCase().includes(searchTerm) ||
+      p.description.toLowerCase().includes(searchTerm)
+    )
+  );
+}
+
+/** Stokta olan ürünleri getir */
+export function getInStockProducts(): Product[] {
+  return PRODUCTS.filter(p => 
+    p.isActive && p.variants.some(v => v.inStock)
+  );
+}
+
+

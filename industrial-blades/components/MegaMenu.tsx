@@ -3,11 +3,11 @@
 import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronRight } from 'lucide-react'
-import { Category } from '@/lib/types'
+import { CategoryView } from '@/lib/types'
 import Link from 'next/link'
 
 interface MegaMenuProps {
-  categories: Category[]
+  categories: CategoryView[]
   isOpen: boolean
   onClose: () => void
 }
@@ -53,7 +53,7 @@ export default function MegaMenu({ categories, isOpen, onClose }: MegaMenuProps)
   const handleCategoryLeave = () => {
     hoverTimeoutRef.current = setTimeout(() => {
       setActiveCategory(null)
-    }, 300) // 300ms delay
+    }, 300)
   }
 
   const handleSubcategoryEnter = () => {
@@ -89,16 +89,22 @@ export default function MegaMenu({ categories, isOpen, onClose }: MegaMenuProps)
                     >
                       <Link
                         href={`/kategoriler/${category.slug}`}
+                        onClick={() => onClose()}
                         className={`
                           flex items-center justify-between px-4 py-3 rounded-lg
                           transition-all duration-200 group
                           ${activeCategory === category.id 
-                            ? 'bg-red-50 text-red-600' 
+                            ? 'bg-primary-50 text-primary-600' 
                             : 'hover:bg-gray-50 text-gray-700'
                           }
                         `}
                       >
-                        <span className="font-medium">{category.name}</span>
+                        <div className="flex-1">
+                          <span className="font-medium">{category.name}</span>
+                          <span className="text-xs text-gray-400 ml-2">
+                            ({category.totalProductCount})
+                          </span>
+                        </div>
                         <ChevronRight 
                           className={`w-4 h-4 transition-transform ${
                             activeCategory === category.id ? 'translate-x-1' : ''
@@ -143,10 +149,12 @@ export default function MegaMenu({ categories, isOpen, onClose }: MegaMenuProps)
                                 <Link
                                   key={subcategory.id}
                                   href={`/kategoriler/${category.slug}/${subcategory.slug}`}
-                                  className="group p-4 rounded-lg border border-gray-200 hover:border-red-300 hover:bg-red-50 transition-all duration-200"
-                                  onClick={onClose}
+                                  className="group p-4 rounded-lg border border-gray-200 hover:border-primary-300 hover:bg-primary-50 transition-all duration-200"
+                                  onClick={() => {
+                                    onClose()
+                                  }}
                                 >
-                                  <h4 className="font-semibold text-gray-900 group-hover:text-red-600 mb-1">
+                                  <h4 className="font-semibold text-gray-900 group-hover:text-primary-600 mb-1">
                                     {subcategory.name}
                                   </h4>
                                   {subcategory.description && (
@@ -165,8 +173,8 @@ export default function MegaMenu({ categories, isOpen, onClose }: MegaMenuProps)
                             <div className="mt-6 pt-6 border-t border-gray-200">
                               <Link
                                 href={`/kategoriler/${category.slug}`}
-                                className="inline-flex items-center text-red-600 hover:text-red-700 font-medium"
-                                onClick={onClose}
+                                className="inline-flex items-center text-primary-600 hover:text-primary-700 font-medium"
+                                onClick={() => onClose()}
                               >
                                 Tüm {category.name} Ürünlerini Gör
                                 <ChevronRight className="w-4 h-4 ml-1" />

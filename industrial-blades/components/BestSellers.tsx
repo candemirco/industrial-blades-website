@@ -1,89 +1,13 @@
 'use client'
 
 import { useState } from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
-import { Eye, Star, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
-
-interface Product {
-  id: string
-  name: string
-  slug: string
-  image: string
-  category: string
-  rating: number
-  reviews: number
-  inStock: boolean
-}
-
-// Örnek ürünler - kategorilerden gelecek
-const sampleProducts: Product[] = [
-  {
-    id: '1',
-    name: '3 Delikli Dilme Jiletleri',
-    slug: '3-delikli-dilme-jiletleri',
-    image: 'https://images.unsplash.com/photo-1503389152951-9f343605f61e?auto=format&fit=crop&w=800&q=80',
-    category: 'Sanayi Jiletleri',
-    rating: 4.8,
-    reviews: 124,
-    inStock: true
-  },
-  {
-    id: '2',
-    name: 'Döner Kebap Bıçakları',
-    slug: 'doner-bicaklari',
-    image: 'https://images.unsplash.com/photo-1505232070786-2f46eae226e0?auto=format&fit=crop&w=800&q=80',
-    category: 'Makina Bıçakları',
-    rating: 4.9,
-    reviews: 89,
-    inStock: true
-  },
-  {
-    id: '3',
-    name: 'OLFA Güvenlik Bıçakları',
-    slug: 'olfa-guvenlik-bicaklari',
-    image: 'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=800&q=80',
-    category: 'İş Güvenliği',
-    rating: 4.7,
-    reviews: 156,
-    inStock: true
-  },
-  {
-    id: '4',
-    name: 'Slotted Dilme Jiletleri',
-    slug: 'slotted-dilme-jiletleri',
-    image: 'https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=800&q=80',
-    category: 'Sanayi Jiletleri',
-    rating: 5.0,
-    reviews: 43,
-    inStock: true
-  },
-  {
-    id: '5',
-    name: 'Vakum Paketleme Bıçakları',
-    slug: 'vakum-paketleme-bicaklari',
-    image: 'https://images.unsplash.com/photo-1503389152951-9f343605f61e?auto=format&fit=crop&w=800&q=80',
-    category: 'Makina Bıçakları',
-    rating: 4.6,
-    reviews: 78,
-    inStock: true
-  },
-  {
-    id: '6',
-    name: 'Trapez Bıçaklar',
-    slug: 'trapez-bicaklar',
-    image: 'https://images.unsplash.com/photo-1505232070786-2f46eae226e0?auto=format&fit=crop&w=800&q=80',
-    category: 'Sanayi Jiletleri',
-    rating: 4.8,
-    reviews: 92,
-    inStock: true
-  }
-]
+import { Eye, Star, ArrowRight, ChevronLeft, ChevronRight, Package } from 'lucide-react'
+import { productService } from '@/lib/services'
 
 export default function BestSellers() {
-  const [scrollPosition, setScrollPosition] = useState(0)
-  const scrollContainerRef = useState<HTMLDivElement | null>(null)
-
+  const featuredProducts = productService.getFeaturedCards()
+  
   const scroll = (direction: 'left' | 'right') => {
     const container = document.getElementById('products-slider')
     if (container) {
@@ -91,6 +15,11 @@ export default function BestSellers() {
       container.scrollBy({ left: scrollAmount, behavior: 'smooth' })
     }
   }
+
+  // Eğer öne çıkan ürün yoksa, tüm ürünlerden ilk 6'sını göster
+  const displayProducts = featuredProducts.length > 0 
+    ? featuredProducts 
+    : productService.getAll().slice(0, 6).map(p => productService.toCardView(p))
 
   return (
     <section className="py-20 bg-steel-50">
@@ -131,25 +60,22 @@ export default function BestSellers() {
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             <div className="flex gap-6 pb-4" style={{ width: 'max-content' }}>
-              {sampleProducts.map((product, index) => (
+              {displayProducts.map((product) => (
                 <div
                   key={product.id}
                   className="group bg-white border border-steel-200 rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 w-80 flex-shrink-0"
                 >
                   {/* Image Container */}
-                  <div className="relative h-64 bg-steel-100 overflow-hidden">
-                    <Image
-                      src={product.image}
-                      alt={product.name}
-                      fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
+                  <div className="relative h-64 bg-gradient-to-br from-steel-100 to-steel-200 overflow-hidden">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <Package className="w-20 h-20 text-steel-300 group-hover:text-primary-500 transition-colors" />
+                    </div>
                     
                     {/* Badge */}
-                    {product.rating >= 4.8 && (
+                    {product.isFeatured && (
                       <div className="absolute top-3 left-3 px-3 py-1 bg-yellow-500 text-white text-xs font-semibold rounded-full flex items-center gap-1">
                         <Star className="w-3 h-3 fill-current" />
-                        Çok Satan
+                        Öne Çıkan
                       </div>
                     )}
 
@@ -169,7 +95,12 @@ export default function BestSellers() {
                   <div className="p-5">
                     {/* Category */}
                     <div className="text-xs text-primary-600 font-semibold mb-2 uppercase tracking-wide">
-                      {product.category}
+                      {product.categoryName}
+                    </div>
+
+                    {/* Code */}
+                    <div className="text-xs text-steel-400 mb-1">
+                      {product.code}
                     </div>
 
                     {/* Title */}
@@ -179,22 +110,18 @@ export default function BestSellers() {
                       </h3>
                     </Link>
 
-                    {/* Rating */}
-                    <div className="flex items-center gap-2 mb-4">
-                      <div className="flex items-center gap-1">
-                        {[...Array(5)].map((_, i) => (
-                          <Star
-                            key={i}
-                            className={`w-4 h-4 ${
-                              i < Math.floor(product.rating)
-                                ? 'text-yellow-400 fill-current'
-                                : 'text-steel-300'
-                            }`}
-                          />
-                        ))}
+                    {/* Variants */}
+                    {product.hasVariants && (
+                      <div className="flex items-center gap-2 mb-4 text-sm text-steel-600">
+                        <span>{product.variantCount} farklı seçenek</span>
                       </div>
-                      <span className="text-sm text-steel-600">
-                        ({product.reviews} değerlendirme)
+                    )}
+
+                    {/* Stock Status */}
+                    <div className="flex items-center gap-2 mb-4">
+                      <span className={`w-2 h-2 rounded-full ${product.inStock ? 'bg-green-500' : 'bg-red-500'}`}></span>
+                      <span className={`text-sm ${product.inStock ? 'text-green-600' : 'text-red-600'}`}>
+                        {product.inStock ? 'Stokta Var' : 'Stokta Yok'}
                       </span>
                     </div>
 
@@ -216,10 +143,10 @@ export default function BestSellers() {
         {/* View All Link */}
         <div className="text-center mt-12">
           <Link
-            href="/urunler"
+            href="/kategoriler"
             className="inline-flex items-center gap-2 px-8 py-4 bg-steel-900 hover:bg-primary-600 text-white font-semibold rounded-lg transition-all hover:scale-105"
           >
-            Tüm Ürünleri Görüntüle
+            Tüm Ürün Kategorilerini Görüntüle
             <ArrowRight className="w-5 h-5" />
           </Link>
         </div>

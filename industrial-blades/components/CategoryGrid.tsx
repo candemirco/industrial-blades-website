@@ -3,11 +3,13 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
-import { categories } from '@/lib/data'
+import { categoryService } from '@/lib/services'
 
 export default function CategoryGrid() {
+  const categories = categoryService.getAllCategoriesWithCounts()
+
   return (
-    <section className="py-20 bg-steel-50">
+    <section id="kategoriler" className="py-20 bg-steel-50 scroll-mt-24">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -32,12 +34,16 @@ export default function CategoryGrid() {
             >
               {/* Image */}
               <div className="relative h-64 overflow-hidden">
-                <Image
-                  src={category.image}
-                  alt={category.name}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                />
+                {category.image ? (
+                  <Image
+                    src={category.image}
+                    alt={category.name}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                ) : (
+                  <div className="absolute inset-0 bg-gradient-to-br from-steel-200 to-steel-300" />
+                )}
                 <div className="absolute inset-0 bg-gradient-to-t from-steel-900/80 via-steel-900/40 to-transparent" />
               </div>
 
@@ -50,24 +56,32 @@ export default function CategoryGrid() {
                   {category.description}
                 </p>
                 
-                {/* Subcategories */}
-                {category.subcategories && (
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {category.subcategories.slice(0, 2).map((sub) => (
-                      <span 
-                        key={sub}
-                        className="text-xs px-2 py-1 bg-white/20 backdrop-blur-sm text-white rounded"
-                      >
-                        {sub}
-                      </span>
-                    ))}
-                  </div>
-                )}
+                {/* Subcategories Preview */}
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {category.subcategories.slice(0, 2).map((sub) => (
+                    <span 
+                      key={sub.id}
+                      className="text-xs px-2 py-1 bg-white/20 backdrop-blur-sm text-white rounded"
+                    >
+                      {sub.name}
+                    </span>
+                  ))}
+                  {category.subcategories.length > 2 && (
+                    <span className="text-xs px-2 py-1 bg-white/20 backdrop-blur-sm text-white rounded">
+                      +{category.subcategories.length - 2} daha
+                    </span>
+                  )}
+                </div>
 
-                {/* Arrow Icon */}
-                <div className="flex items-center text-white group-hover:text-primary-400 transition-colors">
-                  <span className="text-sm font-semibold mr-2">Detayları Gör</span>
-                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />
+                {/* Footer */}
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-white/80">
+                    {category.totalProductCount} ürün
+                  </span>
+                  <div className="flex items-center text-white group-hover:text-primary-400 transition-colors">
+                    <span className="text-sm font-semibold mr-2">Detayları Gör</span>
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />
+                  </div>
                 </div>
               </div>
 

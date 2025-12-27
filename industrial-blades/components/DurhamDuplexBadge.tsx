@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { Award, ArrowRight } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 
 export default function DurhamDuplexBadge() {
   return (
@@ -11,21 +11,16 @@ export default function DurhamDuplexBadge() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left: Content */}
           <div>
-            <div className="inline-flex items-center gap-2 bg-green-700 text-white text-sm font-semibold rounded-full px-4 py-2 mb-6">
-              <Award className="w-4 h-4" />
-              Yetkili Distribütör
-            </div>
-            
             {/* Durham Duplex Logo */}
-            <div className="mb-6">
+            <div className="mb-8">
               <img 
                 src="/images/durham-duplex-logo.png" 
                 alt="Durham Duplex Logo" 
-                className="h-16 w-auto object-contain"
+                className="h-20 w-auto object-contain"
               />
             </div>
             
-            <p className="text-lg text-gray-600 mb-6">
+            <p className="text-xl text-gray-600 mb-6 font-medium">
               Razor Sharp Since 1910
             </p>
             

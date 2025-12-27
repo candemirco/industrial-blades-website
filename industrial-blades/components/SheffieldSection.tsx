@@ -48,10 +48,6 @@ export default function SheffieldSection() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left: Content */}
           <div>
-            <div className="inline-block px-4 py-2 bg-primary-600 text-white text-sm font-semibold rounded-full mb-6">
-              Quality Recognised Worldwide
-            </div>
-            
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
               Sheffield Çelik Kalitesi ile Üretilmiş Bıçaklar
             </h2>

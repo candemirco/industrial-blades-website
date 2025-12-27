@@ -1,10 +1,11 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Menu, X, Search, Phone } from 'lucide-react'
-import { megaMenuCategories } from '@/lib/categories-data'
+import { categoryService } from '@/lib/services'
 import MegaMenu from './MegaMenu'
 
 export default function Header() {
@@ -12,6 +13,10 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false)
   const [closeTimer, setCloseTimer] = useState<NodeJS.Timeout | null>(null)
+  const pathname = usePathname()
+
+  // Kategori verilerini servis üzerinden al
+  const categories = categoryService.getAllCategoriesWithCounts()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,6 +26,19 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // Anasayfada kategoriler bölümüne scroll yapma fonksiyonu
+  const scrollToCategories = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    // Eğer anasayfadaysak, manuel scroll yap
+    if (pathname === '/') {
+      e.preventDefault()
+      const kategorilerSection = document.getElementById('kategoriler')
+      if (kategorilerSection) {
+        kategorilerSection.scrollIntoView({ behavior: 'smooth' })
+      }
+    }
+    // Diğer sayfalardaysak, Link normal çalışsın (anasayfaya yönlendirir)
+  }
+
   const handleMenuOpen = () => {
     if (closeTimer) clearTimeout(closeTimer)
     setIsMegaMenuOpen(true)
@@ -29,14 +47,14 @@ export default function Header() {
   const handleMenuClose = () => {
     const timer = setTimeout(() => {
       setIsMegaMenuOpen(false)
-    }, 200) // 200ms delay
+    }, 200)
     setCloseTimer(timer)
   }
 
   const navigationItems = [
     {
-      title: 'Ürünler',
-      href: '/urunler',
+      title: 'Endüstriyel Kesiciler',
+      href: '/#kategoriler',
       hasMegaMenu: true
     },
     {
@@ -78,7 +96,7 @@ export default function Header() {
           >
             <Image
               src="/images/logo.png"
-              alt="Logo"
+              alt="Alya Bıçak Logo"
               width={120}
               height={38}
               className="w-auto h-auto"
@@ -97,6 +115,7 @@ export default function Header() {
               >
                 <Link
                   href={item.href}
+                  onClick={item.hasMegaMenu ? scrollToCategories : undefined}
                   className="flex items-center gap-1 px-4 py-2 text-steel-700 hover:text-primary-600 font-medium transition-colors rounded-lg hover:bg-steel-50"
                 >
                   {item.title}
@@ -137,13 +156,13 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mega Menu - "Ürünler" için */}
+      {/* Mega Menu */}
       <div
         onMouseEnter={handleMenuOpen}
         onMouseLeave={handleMenuClose}
       >
         <MegaMenu 
-          categories={megaMenuCategories}
+          categories={categories}
           isOpen={isMegaMenuOpen}
           onClose={() => setIsMegaMenuOpen(false)}
         />
@@ -158,13 +177,20 @@ export default function Header() {
                 <Link
                   href={item.href}
                   className="block px-4 py-3 text-steel-700 hover:bg-steel-50 rounded-lg font-medium"
-                  onClick={() => !item.hasMegaMenu && setIsMobileMenuOpen(false)}
+                  onClick={(e) => {
+                    if (item.hasMegaMenu) {
+                      scrollToCategories(e)
+                      setIsMobileMenuOpen(false)
+                    } else {
+                      setIsMobileMenuOpen(false)
+                    }
+                  }}
                 >
                   {item.title}
                 </Link>
                 {item.hasMegaMenu && (
                   <div className="ml-4 mt-2 space-y-2">
-                    {megaMenuCategories.map((category) => (
+                    {categories.map((category) => (
                       <Link
                         key={category.id}
                         href={`/kategoriler/${category.slug}`}
@@ -172,8 +198,18 @@ export default function Header() {
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
                         {category.name}
+                        <span className="text-xs text-steel-400 ml-1">
+                          ({category.totalProductCount})
+                        </span>
                       </Link>
                     ))}
+                    <Link
+                      href="/kategoriler"
+                      className="block px-4 py-2 text-sm font-medium text-primary-600 hover:bg-primary-50 rounded-lg"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      Tüm Kategorileri Gör →
+                    </Link>
                   </div>
                 )}
               </div>
