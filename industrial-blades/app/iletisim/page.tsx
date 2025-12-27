@@ -164,20 +164,20 @@ export default function ContactPage() {
           </h2>
           <div className="bg-steel-100 rounded-xl overflow-hidden h-96">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3010.3!2d29.15!3d41.02!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDAxJzEyLjAiTiAyOcKwMDknMDAuMCJF!5e0!3m2!1str!2str!4v1640000000000!5m2!1str!2str"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3011.0!2d29.1547!3d41.0089!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cac8a2a4b7c8a7%3A0x8f8f8f8f8f8f8f8f!2sAlya%20Tekstil%20San.Tic.Ltd.%C5%9Eti.!5e0!3m2!1str!2str!4v1703692800000!5m2!1str!2str"
               width="100%"
               height="100%"
               style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Alya Bıçak Konum"
+              title="Alya Tekstil San.Tic.Ltd.Şti. Konum"
             />
           </div>
           <p className="text-center text-steel-500 mt-4 text-sm">
             Dudullu OSB, DES Sanayi Sitesi - Kolay ulaşım için{' '}
             <a 
-              href={getGoogleMapsUrl()}
+              href="https://maps.app.goo.gl/fSDG3uDQBgZcC8fj7"
               target="_blank"
               rel="noopener noreferrer"
               className="text-primary-600 hover:underline"
