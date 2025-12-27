@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { categoryService } from '@/lib/services'
+import { SectionHeader, Badge } from '@/components/ui'
 
 export default function CategoryGrid() {
   const categories = categoryService.getAllCategoriesWithCounts()
@@ -12,14 +13,11 @@ export default function CategoryGrid() {
     <section id="kategoriler" className="py-20 bg-steel-50 scroll-mt-24">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-steel-900 mb-4">
-            Ürün Kategorilerimiz
-          </h2>
-          <p className="text-lg text-steel-600 max-w-2xl mx-auto">
-            Her sektör için özel olarak tasarlanmış, yüksek kaliteli endüstriyel kesici bıçaklar
-          </p>
-        </div>
+        <SectionHeader
+          title="Ürün Kategorilerimiz"
+          description="Her sektör için özel olarak tasarlanmış, yüksek kaliteli endüstriyel kesici bıçaklar"
+          size="lg"
+        />
 
         {/* Category Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">

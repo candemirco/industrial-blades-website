@@ -1,7 +1,7 @@
 import { generateMetadata } from '@/lib/seo'
 import Image from 'next/image'
-import Link from 'next/link'
-import { Award, Users, Target, TrendingUp, CheckCircle, Globe, Factory, Truck } from 'lucide-react'
+import { Award, Users, CheckCircle, Globe, Factory, Truck } from 'lucide-react'
+import { Button, Badge, PageHeader } from '@/components/ui'
 
 export const metadata = generateMetadata({
   title: 'Hakkımızda',
@@ -14,39 +14,20 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative text-white py-20 overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <Image
-            src="/images/pages/hakkimizda-header.jpg"
-            alt="Hakkımızda"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-black/40" />
-        </div>
-        
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Hakkımızda
-            </h1>
-            <p className="text-xl text-white/90">
-              28 yılı aşkın deneyim, 35 ülkeye ihracat, dünya standartlarında kalite
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHeader
+        title="Hakkımızda"
+        description="28 yılı aşkın deneyim, 35 ülkeye ihracat, dünya standartlarında kalite"
+        backgroundImage="/images/pages/hakkimizda-header.jpg"
+      />
 
       {/* Story Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="inline-block px-4 py-2 bg-primary-100 text-primary-700 text-sm font-semibold rounded-full mb-6">
+              <Badge variant="primary" size="md" rounded="full" className="mb-6">
                 28+ Yıllık Deneyim
-              </div>
+              </Badge>
               
               <h2 className="text-3xl md:text-4xl font-bold text-steel-900 mb-6">
                 Endüstrinin Güvenilir Tedarikçisi
@@ -239,20 +220,12 @@ export default function AboutPage() {
             28 yıllık deneyimimizle size en uygun çözümü sunmaya hazırız.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Link
-              href="/iletisim"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-primary-600 hover:bg-primary-700 font-semibold rounded-lg transition-all"
-            >
+            <Button href="/iletisim" size="lg">
               İletişime Geçin
-            </Link>
-            <a
-              href="https://wa.me/905551234567"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-green-500 hover:bg-green-600 font-semibold rounded-lg transition-all"
-            >
+            </Button>
+            <Button href="https://wa.me/905551234567" variant="whatsapp" size="lg">
               WhatsApp ile Ulaşın
-            </a>
+            </Button>
           </div>
         </div>
       </section>

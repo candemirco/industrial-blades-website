@@ -1,7 +1,6 @@
 import { generateMetadata } from '@/lib/seo'
 import { MessageCircle, CheckCircle, ArrowRight, Phone } from 'lucide-react'
-import Link from 'next/link'
-import Image from 'next/image'
+import { Button, PageHeader } from '@/components/ui'
 
 export const metadata = generateMetadata({
   title: 'Danışmanlık Hizmetleri',
@@ -14,30 +13,11 @@ export default function ConsultingPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative text-white py-20 overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <Image
-            src="/images/pages/danismanlik-header.jpg"
-            alt="Danışmanlık"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-black/40" />
-        </div>
-        
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Profesyonel Danışmanlık
-            </h1>
-            <p className="text-xl text-white/90 whitespace-nowrap">
-              Doğru bıçak seçimi için uzman desteği. Her malzeme için en uygun kesim çözümü.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHeader
+        title="Profesyonel Danışmanlık"
+        description="Doğru bıçak seçimi için uzman desteği. Her malzeme için en uygun kesim çözümü."
+        backgroundImage="/images/pages/danismanlik-header.jpg"
+      />
 
       {/* Process Section */}
       <section className="py-20 bg-white">
@@ -214,22 +194,24 @@ export default function ConsultingPage() {
               Hangi malzeme için hangi bıçak? Uzmanlarımız size yol gösteriyor.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <Link
-                href="/iletisim"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-white text-primary-600 font-semibold rounded-lg hover:bg-steel-50 transition-all"
+              <Button 
+                href="/iletisim" 
+                variant="outline" 
+                size="lg" 
+                icon={ArrowRight}
+                className="bg-white text-primary-600 border-white hover:bg-steel-50"
               >
-                <span>İletişim Formu</span>
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-              <a
+                İletişim Formu
+              </Button>
+              <Button
                 href="https://wa.me/905551234567?text=Merhaba, kesim danışmanlığı almak istiyorum."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-green-500 hover:bg-green-600 font-semibold rounded-lg transition-all"
+                variant="whatsapp"
+                size="lg"
+                icon={Phone}
+                iconPosition="left"
               >
-                <Phone className="w-5 h-5" />
-                <span>WhatsApp ile İletişim</span>
-              </a>
+                WhatsApp ile İletişim
+              </Button>
             </div>
           </div>
         </div>
