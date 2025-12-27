@@ -120,6 +120,6 @@ export function getEmailUrl(subject?: string): string {
 }
 
 export function getGoogleMapsUrl(): string {
-  const address = encodeURIComponent(siteConfig.contact.address.full);
-  return `https://www.google.com/maps/search/?api=1&query=${address}`;
+  // Doğrudan Google Maps short link - Alya Tekstil konumu
+  return 'https://maps.app.goo.gl/YRMreTyTnF4mGg578';
 }

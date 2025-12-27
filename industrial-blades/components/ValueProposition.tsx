@@ -1,8 +1,6 @@
 /**
  * Value Proposition Section
  * "Neden Alya?" - Farkımızı ve değer önerimizi net şekilde anlatan section
- * 
- * Stratejik Amaç: "Pahalı ama değer" mesajını güçlendirmek
  */
 
 'use client'
@@ -13,29 +11,25 @@ import Link from 'next/link'
 const valueProps = [
   {
     icon: TrendingUp,
-    metric: '%40',
     title: 'Daha Az Makine Duruşu',
-    description: 'Sheffield çeliği sayesinde bıçak ömrü uzar, değişim sıklığı azalır. Üretim hattınız kesintisiz çalışır.',
-    highlight: 'ROI Artışı',
+    description: 'Kaliteli çelik = uzun bıçak ömrü = daha az değişim. Üretim hattınız kesintisiz çalışır.',
+    highlight: 'Verimlilik',
   },
   {
     icon: Clock,
-    metric: '3x',
-    title: 'Daha Uzun Bıçak Ömrü',
-    description: 'Standart bıçaklara göre 3 kat daha uzun kesim performansı. Uzun vadede maliyet tasarrufu.',
-    highlight: 'Maliyet Tasarrufu',
+    title: 'Uzun Bıçak Ömrü',
+    description: 'Yüksek kalite hammadde ve hassas üretim prosesi ile standart bıçaklardan çok daha uzun ömür.',
+    highlight: 'Dayanıklılık',
   },
   {
     icon: Shield,
-    metric: '%100',
     title: 'FDA & USDA Uyumlu',
     description: 'Gıda, ilaç ve hijyen gerektiren tüm sektörlerde güvenle kullanım. Uluslararası sertifikalar.',
     highlight: 'Gıda Güvenliği',
   },
   {
     icon: Wrench,
-    metric: '28+',
-    title: 'Yıl Sektör Deneyimi',
+    title: '28+ Yıl Sektör Deneyimi',
     description: 'Türkiye\'nin lider firmaları ile çalışıyoruz. Teknik danışmanlık ve satış sonrası destek.',
     highlight: 'Uzman Destek',
   },
@@ -61,17 +55,17 @@ export default function ValueProposition() {
             Neden Alya Bıçak?
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-steel-900 mb-4">
-            İlk Bakışta Pahalı, <br className="hidden md:block" />
-            <span className="text-primary-600">Uzun Vadede Karlı</span>
+            Kaliteli Hammadde, <br className="hidden md:block" />
+            <span className="text-primary-600">Uzun Vadede Tasarruf</span>
           </h2>
           <p className="text-lg text-steel-600 max-w-2xl mx-auto">
-            Ucuz bıçaklar size zaman, para ve verimlilik kaybettirir. 
-            Sheffield kalitesi ile makine duruşlarını azaltın, üretim verimliliğinizi artırın.
+            Hammadde ve proses kalitesinde en yüksek seviyedeki çeliklerden üretilen 
+            endüstriyel kesiciler, makine duruşlarını azaltır ve üretim verimliliğinizi artırır.
           </p>
         </div>
 
         {/* Value Props Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {valueProps.map((prop, index) => (
             <div 
               key={prop.title}
@@ -87,11 +81,6 @@ export default function ValueProposition() {
                 <prop.icon className="w-7 h-7 text-primary-600 group-hover:text-white transition-colors" />
               </div>
               
-              {/* Metric */}
-              <div className="text-4xl font-bold text-steel-900 mb-2">
-                {prop.metric}
-              </div>
-              
               {/* Title */}
               <h3 className="text-xl font-semibold text-steel-900 mb-3">
                 {prop.title}
@@ -105,47 +94,15 @@ export default function ValueProposition() {
           ))}
         </div>
 
-        {/* Comparison CTA */}
-        <div className="bg-steel-900 rounded-2xl p-8 md:p-12">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div>
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-                Standart Bıçak vs Sheffield Bıçağı
-              </h3>
-              <p className="text-steel-300 mb-6">
-                Gerçek maliyet hesabı: Bıçak fiyatı + değişim maliyeti + makine duruş süresi + 
-                üretim kaybı = Toplam maliyet. Sheffield her zaman kazandırır.
-              </p>
-              
-              {/* Simple Comparison */}
-              <div className="grid grid-cols-2 gap-4 text-sm">
-                <div className="bg-red-500/20 rounded-lg p-4">
-                  <div className="text-red-400 font-medium mb-1">Ucuz Bıçak</div>
-                  <div className="text-white">Sık değişim, yüksek duruş</div>
-                </div>
-                <div className="bg-green-500/20 rounded-lg p-4">
-                  <div className="text-green-400 font-medium mb-1">Sheffield</div>
-                  <div className="text-white">Uzun ömür, düşük maliyet</div>
-                </div>
-              </div>
-            </div>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-end">
-              <Link
-                href="/danismanlik"
-                className="inline-flex items-center justify-center gap-2 px-6 py-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-all"
-              >
-                Ücretsiz Maliyet Analizi
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-              <Link
-                href="/kategoriler"
-                className="inline-flex items-center justify-center gap-2 px-6 py-4 border border-white/30 hover:border-white text-white font-semibold rounded-lg transition-all"
-              >
-                Ürünleri İncele
-              </Link>
-            </div>
-          </div>
+        {/* Simple CTA */}
+        <div className="text-center mt-12">
+          <Link
+            href="/danismanlik"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-all hover:scale-105"
+          >
+            Ücretsiz Danışmanlık Alın
+            <ArrowRight className="w-5 h-5" />
+          </Link>
         </div>
       </div>
     </section>
