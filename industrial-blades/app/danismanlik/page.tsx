@@ -18,7 +18,7 @@ export default function ConsultingPage() {
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
-            src="/images/danismanlik header.jpg"
+            src="/images/pages/danismanlik-header.jpg"
             alt="Danışmanlık"
             fill
             className="object-cover"

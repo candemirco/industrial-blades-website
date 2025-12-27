@@ -4,6 +4,9 @@
  * Tüm kütüphane erişimi bu dosya üzerinden yapılabilir
  */
 
+// Konfigürasyon
+export * from './config';
+
 // Tipler
 export * from './types';
 

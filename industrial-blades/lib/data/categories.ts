@@ -266,7 +266,7 @@ export const CATEGORIES: Record<string, Category> = {
     slug: 'sanayi-jiletleri',
     name: 'Sanayi Jiletleri',
     description: 'Endüstriyel kullanım için profesyonel sanayi jiletleri ve kesici aletler',
-    image: '/images/sanayi jiletleri.jpg',
+    image: '/images/categories/sanayi-jiletleri.jpg',
     subcategoryIds: [
       'ok-bicaklar',
       '3-delikli-dilme',
@@ -288,7 +288,7 @@ export const CATEGORIES: Record<string, Category> = {
     slug: 'makina-bicaklari',
     name: 'Makina Bıçakları',
     description: 'Endüstriyel makinalar için özel üretim bıçaklar ve kesici sistemler',
-    image: '/images/makina bicaklari.jpg',
+    image: '/images/categories/makina-bicaklari.jpg',
     subcategoryIds: [
       'doner-bicaklari',
       'koli-bantlama',
@@ -308,7 +308,7 @@ export const CATEGORIES: Record<string, Category> = {
     slug: 'is-guvenligi-el-bicaklari',
     name: 'İş Güvenliği & El Bıçakları',
     description: 'İş güvenliği standartlarına uygun profesyonel el bıçakları ve kesici aletler',
-    image: '/images/el bicaklari.jpg',
+    image: '/images/categories/is-guvenligi-el-bicaklari.jpg',
     subcategoryIds: [
       'oto-geri-cekilebilir',
       'sabit-uclu',

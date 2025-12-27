@@ -1,5 +1,5 @@
 import { generateMetadata } from '@/lib/seo'
-import { megaMenuCategories } from '@/lib/categories-data'
+import { categoryService } from '@/lib/services'
 import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowRight, Package } from 'lucide-react'
@@ -12,6 +12,8 @@ export const metadata = generateMetadata({
 })
 
 export default function CategoriesPage() {
+  const categories = categoryService.getAllCategoriesWithCounts()
+  
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -32,17 +34,26 @@ export default function CategoriesPage() {
       <section className="py-20 bg-steel-50">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {megaMenuCategories.map((category) => (
+            {categories.map((category) => (
               <Link
                 key={category.id}
                 href={`/kategoriler/${category.slug}`}
                 className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
               >
-                {/* Image Placeholder */}
+                {/* Category Image */}
                 <div className="relative h-64 bg-gradient-to-br from-steel-200 to-steel-300">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <Package className="w-24 h-24 text-steel-400 group-hover:text-primary-600 transition-colors" />
-                  </div>
+                  {category.image ? (
+                    <Image
+                      src={category.image}
+                      alt={category.name}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <Package className="w-24 h-24 text-steel-400 group-hover:text-primary-600 transition-colors" />
+                    </div>
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-steel-900/80 via-steel-900/40 to-transparent" />
                 </div>
 
@@ -75,7 +86,7 @@ export default function CategoriesPage() {
                   {/* Footer */}
                   <div className="flex items-center justify-between pt-4 border-t border-steel-200">
                     <span className="text-sm text-steel-600">
-                      {category.subcategories.length} alt kategori
+                      {category.subcategories.length} alt kategori • {category.totalProductCount} ürün
                     </span>
                     <ArrowRight className="w-5 h-5 text-steel-400 group-hover:text-primary-600 group-hover:translate-x-1 transition-all" />
                   </div>

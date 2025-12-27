@@ -18,7 +18,7 @@ export default function AboutPage() {
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
-            src="/images/hakkimizde header.jpg"
+            src="/images/pages/hakkimizda-header.jpg"
             alt="Hakkımızda"
             fill
             className="object-cover"
@@ -89,7 +89,7 @@ export default function AboutPage() {
             
             <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-xl">
               <Image
-                src="/images/hakkimizda.jpg"
+                src="/images/pages/hakkimizda-bg.jpg"
                 alt="Alya Bıçak - Hakkımızda"
                 fill
                 className="object-cover"

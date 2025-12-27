@@ -14,7 +14,7 @@ export default function DurhamDuplexBadge() {
             {/* Durham Duplex Logo */}
             <div className="mb-8">
               <img 
-                src="/images/durham-duplex-logo.png" 
+                src="/images/brand/durham-duplex-logo.png" 
                 alt="Durham Duplex Logo" 
                 className="h-20 w-auto object-contain"
               />
@@ -82,7 +82,7 @@ export default function DurhamDuplexBadge() {
           <div className="relative">
             <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src="/images/durham duplex bicaklari.jpg"
+                src="/images/brand/durham-duplex-bicaklari.jpg"
                 alt="Durham Duplex Bıçakları"
                 fill
                 className="object-cover"

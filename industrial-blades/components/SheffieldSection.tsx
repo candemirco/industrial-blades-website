@@ -105,7 +105,7 @@ export default function SheffieldSection() {
           <div className="relative">
             <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src="/images/made in sheffield 2.webp"
+                src="/images/brand/sheffield-badge.webp"
                 alt="Sheffield Kalitesi"
                 fill
                 className="object-cover"
