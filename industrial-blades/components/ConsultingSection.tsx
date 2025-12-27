@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { MessageCircle, ArrowRight } from 'lucide-react'
 import { Button, Badge } from '@/components/ui'
+import { getWhatsAppUrl } from '@/lib/config'
 
 export default function ConsultingSection() {
   return (
@@ -93,7 +94,7 @@ export default function ConsultingSection() {
               </Button>
 
               <Button
-                href="https://wa.me/905551234567?text=Merhaba, kesim danışmanlığı almak istiyorum"
+                href={getWhatsAppUrl('Merhaba, kesim danışmanlığı almak istiyorum.')}
                 variant="whatsapp"
                 size="lg"
               >

@@ -2,6 +2,7 @@ import { generateMetadata } from '@/lib/seo'
 import Image from 'next/image'
 import { Award, Users, CheckCircle, Globe, Factory, Truck } from 'lucide-react'
 import { Button, Badge, PageHeader } from '@/components/ui'
+import { getWhatsAppUrl } from '@/lib/config'
 
 export const metadata = generateMetadata({
   title: 'Hakkımızda',
@@ -223,7 +224,7 @@ export default function AboutPage() {
             <Button href="/iletisim" size="lg">
               İletişime Geçin
             </Button>
-            <Button href="https://wa.me/905551234567" variant="whatsapp" size="lg">
+            <Button href={getWhatsAppUrl('Merhaba, Alya Bıçak hakkında bilgi almak istiyorum.')} variant="whatsapp" size="lg">
               WhatsApp ile Ulaşın
             </Button>
           </div>

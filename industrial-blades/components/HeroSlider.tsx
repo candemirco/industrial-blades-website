@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react'
 import { getActiveSlides } from '@/lib/data/hero-slides'
+import { siteConfig, getWhatsAppUrl } from '@/lib/config'
 
 export default function HeroSlider() {
   const heroSlides = getActiveSlides()
@@ -129,7 +130,7 @@ export default function HeroSlider() {
 
                     {/* WhatsApp */}
                     <a
-                      href={`https://wa.me/905551234567?text=${encodeURIComponent(`Merhaba, ${slide.title} hakkında bilgi almak istiyorum.`)}`}
+                      href={getWhatsAppUrl(`Merhaba, ${slide.title} hakkında bilgi almak istiyorum.`)}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="group inline-flex items-center gap-2 px-8 py-4 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-lg transition-all hover:scale-105 shadow-xl hover:shadow-2xl"
