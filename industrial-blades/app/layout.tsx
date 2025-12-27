@@ -3,7 +3,9 @@ import { Montserrat } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import WhatsAppButton from '@/components/WhatsAppButton'
 import { generateOrganizationSchema } from '@/lib/seo'
+import { siteConfig } from '@/lib/config'
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -12,20 +14,28 @@ const montserrat = Montserrat({
 })
 
 export const metadata: Metadata = {
-  title: 'Alya Bıçak | Endüstriyel Kesici Bıçaklar | Sheffield Kalitesi',
-  description: 'Alya Bıçak - Endüstriyel kesici bıçaklar, makina bıçakları, sanayi jiletleri ve özel üretim çözümleri. Sheffield kalitesi ile üretilmiş profesyonel bıçaklar. Martor, Lutz Blade alternatifi.',
-  keywords: 'alya bıçak, alya bıçakları, endüstriyel bıçak, kesici bıçak, makina bıçağı, sanayi jileti, sheffield bıçak, özel üretim bıçak, endüstriyel kesici, martor alternatifi, lutz blade alternatifi',
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: `${siteConfig.name} | ${siteConfig.tagline}`,
+    template: `%s | ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
+  keywords: [...siteConfig.seo.keywords],
+  authors: [{ name: siteConfig.company.legalName }],
+  creator: siteConfig.company.legalName,
+  publisher: siteConfig.company.legalName,
   openGraph: {
-    title: 'Alya Bıçak | Endüstriyel Kesici Bıçaklar',
-    description: 'Sheffield kalitesinde endüstriyel kesici bıçaklar. Profesyonel çözümler, mükemmel performans.',
-    type: 'website',
+    title: `${siteConfig.name} | ${siteConfig.tagline}`,
+    description: siteConfig.description,
+    url: siteConfig.url,
+    siteName: siteConfig.name,
     locale: 'tr_TR',
-    siteName: 'Alya Bıçak',
+    type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Alya Bıçak | Endüstriyel Kesici Bıçaklar',
-    description: 'Sheffield kalitesinde endüstriyel kesici bıçaklar.',
+    title: `${siteConfig.name} | ${siteConfig.tagline}`,
+    description: siteConfig.description,
   },
   robots: {
     index: true,
@@ -37,6 +47,10 @@ export const metadata: Metadata = {
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
+  },
+  verification: {
+    // Google Search Console verification (production'da eklenecek)
+    // google: 'verification-code',
   },
 }
 
@@ -61,6 +75,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <WhatsAppButton />
       </body>
     </html>
   )
