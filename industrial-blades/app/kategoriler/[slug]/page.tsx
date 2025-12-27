@@ -115,43 +115,6 @@ export default async function CategoryPage({ params }: PageProps) {
           </div>
         </section>
 
-        {/* Features Section */}
-        <section className="py-20 bg-white">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-steel-900 mb-8 text-center">
-                Neden {category.name}?
-              </h2>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="p-6 bg-steel-50 rounded-xl">
-                  <h3 className="font-semibold text-steel-900 mb-2">Sheffield Kalitesi</h3>
-                  <p className="text-steel-600 text-sm">
-                    Tüm ürünlerimiz İngiltere Sheffield standartlarında üretilmiştir.
-                  </p>
-                </div>
-                <div className="p-6 bg-steel-50 rounded-xl">
-                  <h3 className="font-semibold text-steel-900 mb-2">Geniş Yelpaze</h3>
-                  <p className="text-steel-600 text-sm">
-                    Farklı ölçü ve özelliklerde geniş ürün seçenekleri.
-                  </p>
-                </div>
-                <div className="p-6 bg-steel-50 rounded-xl">
-                  <h3 className="font-semibold text-steel-900 mb-2">Hızlı Teslimat</h3>
-                  <p className="text-steel-600 text-sm">
-                    Stoktan anında gönderim imkanı.
-                  </p>
-                </div>
-                <div className="p-6 bg-steel-50 rounded-xl">
-                  <h3 className="font-semibold text-steel-900 mb-2">Teknik Destek</h3>
-                  <p className="text-steel-600 text-sm">
-                    Profesyonel danışmanlık ve teknik destek hizmeti.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* CTA Section */}
         <section className="py-20 bg-primary-600 text-white">
           <div className="container mx-auto px-4 text-center">

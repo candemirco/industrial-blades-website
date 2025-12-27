@@ -133,9 +133,8 @@ img {
   height: auto;
 }
 
-/* Image protection - sürükleme ve seçim engelleme */
-img.protected,
-.image-protected img {
+/* Global Image Protection - Tüm görseller için */
+img {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -144,17 +143,46 @@ img.protected,
   -khtml-user-drag: none;
   -moz-user-drag: none;
   -o-user-drag: none;
-  pointer-events: none;
+  -webkit-touch-callout: none;
 }
 
-/* Ürün görselleri için koruma */
-.product-image {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+/* GPU Acceleration Utilities */
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
+
+.transform-gpu {
+  transform: translateZ(0);
+}
+
+/* Custom Shadow Hierarchy */
+.shadow-subtle {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.shadow-card {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.shadow-elevated {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.shadow-floating {
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+/* Font Weight Utility */
+.font-thin { font-weight: 100; }
+.font-extralight { font-weight: 200; }
+.font-light { font-weight: 300; }
+.font-normal { font-weight: 400; }
+.font-medium { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
+.font-extrabold { font-weight: 800; }
+.font-black { font-weight: 900; }
 
 /* Print styles */
 @media print {

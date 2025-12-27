@@ -6,7 +6,7 @@ import { ArrowRight } from 'lucide-react'
 
 export default function DurhamDuplexBadge() {
   return (
-    <section className="py-20 bg-gray-100 relative overflow-hidden">
+    <section className="py-24 lg:py-32 bg-steel-50 relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left: Content */}

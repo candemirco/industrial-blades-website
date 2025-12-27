@@ -22,7 +22,7 @@ export default function BestSellers() {
     : productService.getAll().slice(0, 6).map(p => productService.toCardView(p))
 
   return (
-    <section className="py-20 bg-steel-50">
+    <section className="py-20 lg:py-24 bg-steel-50">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-12">
@@ -63,7 +63,7 @@ export default function BestSellers() {
               {displayProducts.map((product) => (
                 <div
                   key={product.id}
-                  className="group bg-white border border-steel-200 rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 w-80 flex-shrink-0"
+                  className="group bg-white border border-steel-200 rounded-xl overflow-hidden hover:border-primary-200 hover:shadow-card transition-all duration-300 w-80 flex-shrink-0"
                 >
                   {/* Image Container */}
                   <div className="relative h-64 bg-gradient-to-br from-steel-100 to-steel-200 overflow-hidden">

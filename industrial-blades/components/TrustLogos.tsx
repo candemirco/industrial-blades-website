@@ -23,7 +23,7 @@ const stats = [
 
 export default function TrustLogos() {
   return (
-    <section className="py-8 bg-steel-900 border-y border-steel-800">
+    <section className="py-6 bg-steel-900 border-y border-steel-800">
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
           

@@ -46,7 +46,7 @@ export const siteConfig = {
   
   // Şirket Bilgileri
   company: {
-    legalName: 'Alya Tekstil Sanayi Ticaret Ltd.Şti.',
+    legalName: 'Alya Tekstil Sanayi Ticaret Ltd. Şti.',
     foundedYear: 1996,
     yearsOfExperience: new Date().getFullYear() - 1996,
     exportCountries: 35,

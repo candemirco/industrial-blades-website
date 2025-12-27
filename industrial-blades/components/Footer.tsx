@@ -23,8 +23,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
-            <h3 className="text-xl font-semibold text-white mb-6">
-              {siteConfig.name}
+            <h3 className="text-lg font-semibold text-white mb-6">
+              {siteConfig.company.legalName}
             </h3>
             <p className="text-steel-400 mb-4">
               {siteConfig.company.yearsOfExperience} yılı aşkın süredir endüstriyel kesiciler tedarik ediyoruz. 

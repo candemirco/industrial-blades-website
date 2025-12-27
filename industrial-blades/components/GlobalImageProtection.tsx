@@ -2,6 +2,9 @@
  * Global Image Protection
  * Tüm site görsellerini koruma altına alır
  * Layout.tsx'e eklenerek çalışır
+ * 
+ * NOT: Hydration hatası önlemek için görsellere doğrudan style eklemiyoruz
+ * Bunun yerine event listener'lar ve CSS kullanıyoruz
  */
 
 'use client'
@@ -46,41 +49,11 @@ export default function GlobalImageProtection() {
     document.addEventListener('dragstart', handleDragStart)
     document.addEventListener('keydown', handleKeyDown)
 
-    // Tüm mevcut görsellere CSS koruması ekle
-    const protectImages = () => {
-      const images = document.querySelectorAll('img')
-      images.forEach((img) => {
-        img.setAttribute('draggable', 'false')
-        img.style.userSelect = 'none'
-        img.style.webkitUserSelect = 'none'
-        // @ts-ignore
-        img.style.webkitTouchCallout = 'none'
-      })
-    }
-
-    // İlk yüklemede ve DOM değişikliklerinde çalıştır
-    protectImages()
-    
-    // MutationObserver ile yeni eklenen görselleri de koru
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.addedNodes.length) {
-          protectImages()
-        }
-      })
-    })
-
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true,
-    })
-
     // Cleanup
     return () => {
       document.removeEventListener('contextmenu', handleContextMenu)
       document.removeEventListener('dragstart', handleDragStart)
       document.removeEventListener('keydown', handleKeyDown)
-      observer.disconnect()
     }
   }, [])
 

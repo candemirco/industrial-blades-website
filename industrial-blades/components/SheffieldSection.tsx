@@ -36,7 +36,7 @@ export default function SheffieldSection() {
   ]
 
   return (
-    <section className="py-20 bg-steel-900 text-white relative overflow-hidden">
+    <section className="py-16 lg:py-20 bg-steel-900 text-white relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
