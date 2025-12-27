@@ -1,6 +1,7 @@
 import { generateMetadata } from '@/lib/seo'
 import ContactForm from '@/components/ContactForm'
-import { MapPin, Phone, Mail, Clock } from 'lucide-react'
+import { MapPin, Phone, Mail, Clock, Printer, ExternalLink } from 'lucide-react'
+import { siteConfig, getWhatsAppUrl, getPhoneUrl, getEmailUrl, getGoogleMapsUrl } from '@/lib/config'
 
 export const metadata = generateMetadata({
   title: 'İletişim',
@@ -10,6 +11,8 @@ export const metadata = generateMetadata({
 })
 
 export default function ContactPage() {
+  const { contact } = siteConfig
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -54,9 +57,18 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-semibold text-steel-900 mb-2">Adres</h3>
                     <p className="text-steel-600">
-                      Organize Sanayi Bölgesi, 123. Sokak No:45<br />
-                      İstanbul, Türkiye
+                      {contact.address.line1}<br />
+                      {contact.address.line2}<br />
+                      {contact.address.postalCode} {contact.address.district}-{contact.address.city}/{contact.address.country}
                     </p>
+                    <a 
+                      href={getGoogleMapsUrl()}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 mt-2 text-sm text-primary-600 hover:text-primary-700"
+                    >
+                      Haritada Göster <ExternalLink className="w-3 h-3" />
+                    </a>
                   </div>
                 </div>
 
@@ -68,11 +80,23 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-semibold text-steel-900 mb-2">Telefon</h3>
                     <a 
-                      href="tel:+905551234567" 
-                      className="text-primary-600 hover:text-primary-700 font-medium"
+                      href={getPhoneUrl()} 
+                      className="text-primary-600 hover:text-primary-700 font-medium block"
                     >
-                      +90 555 123 45 67
+                      {contact.phone}
                     </a>
+                    <span className="text-sm text-steel-500">({contact.phoneLines})</span>
+                  </div>
+                </div>
+
+                {/* Fax */}
+                <div className="flex items-start gap-4 p-6 bg-white rounded-xl shadow-sm">
+                  <div className="flex-shrink-0 w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
+                    <Printer className="w-6 h-6 text-primary-600" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-steel-900 mb-2">Fax</h3>
+                    <span className="text-steel-700">{contact.fax}</span>
                   </div>
                 </div>
 
@@ -84,10 +108,10 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-semibold text-steel-900 mb-2">E-posta</h3>
                     <a 
-                      href="mailto:info@alyabicak.com" 
+                      href={getEmailUrl('Bilgi Talebi')} 
                       className="text-primary-600 hover:text-primary-700 font-medium"
                     >
-                      info@alyabicak.com
+                      {contact.email}
                     </a>
                   </div>
                 </div>
@@ -100,9 +124,8 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-semibold text-steel-900 mb-2">Çalışma Saatleri</h3>
                     <p className="text-steel-600">
-                      Pazartesi - Cuma: 09:00 - 18:00<br />
-                      Cumartesi: 09:00 - 13:00<br />
-                      Pazar: Kapalı
+                      Pazartesi - Cuma: {contact.workingHours.weekdays}<br />
+                      Hafta Sonu: Kapalı
                     </p>
                   </div>
                 </div>
@@ -117,7 +140,7 @@ export default function ContactPage() {
                   WhatsApp üzerinden anında yanıt alın
                 </p>
                 <a
-                  href="https://wa.me/905551234567?text=Merhaba, Alya Bıçak hakkında bilgi almak istiyorum."
+                  href={getWhatsAppUrl('Merhaba, Alya Bıçak hakkında bilgi almak istiyorum.')}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-6 py-3 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-lg transition-colors"
@@ -133,20 +156,37 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Map Section - Placeholder */}
+      {/* Map Section - Google Maps Embed */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-steel-900 mb-8 text-center">
             Bizi Ziyaret Edin
           </h2>
-          <div className="bg-steel-100 rounded-xl h-96 flex items-center justify-center">
-            <p className="text-steel-600">
-              Harita entegrasyonu buraya eklenecek (Google Maps API)
-            </p>
+          <div className="bg-steel-100 rounded-xl overflow-hidden h-96">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3010.3!2d29.15!3d41.02!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDAxJzEyLjAiTiAyOcKwMDknMDAuMCJF!5e0!3m2!1str!2str!4v1640000000000!5m2!1str!2str"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Alya Bıçak Konum"
+            />
           </div>
+          <p className="text-center text-steel-500 mt-4 text-sm">
+            Dudullu OSB, DES Sanayi Sitesi - Kolay ulaşım için{' '}
+            <a 
+              href={getGoogleMapsUrl()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary-600 hover:underline"
+            >
+              Google Maps&apos;te açın
+            </a>
+          </p>
         </div>
       </section>
     </div>
   )
 }
-

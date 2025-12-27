@@ -22,6 +22,10 @@ export const mainNavigation: NavItem[] = [
     href: '/sheffield-kalitesi',
   },
   {
+    title: 'Bülten',
+    href: '/bulten',
+  },
+  {
     title: 'Danışmanlık',
     href: '/danismanlik',
   },
@@ -39,12 +43,13 @@ export const footerNavigation = {
   quickLinks: [
     { title: 'Hakkımızda', href: '/hakkimizda' },
     { title: 'Endüstriyel Kesiciler', href: '/kategoriler' },
+    { title: 'Bülten', href: '/bulten' },
     { title: 'Danışmanlık', href: '/danismanlik' },
     { title: 'İletişim', href: '/iletisim' },
   ],
   legal: [
-    { title: 'Gizlilik Politikası', href: '/gizlilik-politikasi' },
-    { title: 'KVKK', href: '/kvkk' },
+    { title: 'KVKK Aydınlatma Metni', href: '/kvkk' },
+    { title: 'Çerez Politikası', href: '/cerez-politikasi' },
   ],
 }
 

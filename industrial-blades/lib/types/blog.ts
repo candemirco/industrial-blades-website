@@ -1,0 +1,83 @@
+/**
+ * Blog/Bülten Type Definitions
+ */
+
+export interface BlogPost {
+  id: string
+  slug: string
+  title: string
+  excerpt: string
+  content: string
+  coverImage: string
+  author: BlogAuthor
+  category: BlogCategory
+  tags: string[]
+  publishedAt: string
+  updatedAt?: string
+  readingTime: number // dakika
+  featured?: boolean
+  seo?: BlogSEO
+}
+
+export interface BlogAuthor {
+  id: string
+  name: string
+  title: string
+  avatar?: string
+}
+
+export interface BlogCategory {
+  id: string
+  name: string
+  slug: string
+  description?: string
+}
+
+export interface BlogSEO {
+  title?: string
+  description?: string
+  keywords?: string[]
+  focusKeyword?: string
+}
+
+// Sabit kategoriler
+export const BLOG_CATEGORIES: BlogCategory[] = [
+  {
+    id: 'sektor-haberleri',
+    name: 'Sektör Haberleri',
+    slug: 'sektor-haberleri',
+    description: 'Endüstriyel kesici sektöründen güncel haberler',
+  },
+  {
+    id: 'urun-rehberleri',
+    name: 'Ürün Rehberleri',
+    slug: 'urun-rehberleri',
+    description: 'Doğru bıçak seçimi için kapsamlı rehberler',
+  },
+  {
+    id: 'teknik-yazilar',
+    name: 'Teknik Yazılar',
+    slug: 'teknik-yazilar',
+    description: 'Çelik kalitesi, bakım ve teknik bilgiler',
+  },
+  {
+    id: 'fuarlar',
+    name: 'Fuarlar & Etkinlikler',
+    slug: 'fuarlar',
+    description: 'Sektörel fuarlar ve etkinlikler',
+  },
+  {
+    id: 'sirket-haberleri',
+    name: 'Şirket Haberleri',
+    slug: 'sirket-haberleri',
+    description: 'Alya Bıçak kurumsal haberler',
+  },
+]
+
+// Varsayılan yazar
+export const DEFAULT_AUTHOR: BlogAuthor = {
+  id: 'alya-bicak',
+  name: 'Alya Bıçak',
+  title: 'Editör',
+}
+

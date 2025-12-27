@@ -4,6 +4,7 @@ import SheffieldSection from '@/components/SheffieldSection'
 import DurhamDuplexBadge from '@/components/DurhamDuplexBadge'
 import ConsultingSection from '@/components/ConsultingSection'
 import BestSellers from '@/components/BestSellers'
+import BlogSection from '@/components/BlogSection'
 
 export default function HomePage() {
   return (
@@ -12,6 +13,7 @@ export default function HomePage() {
       <CategoryGrid />
       <DurhamDuplexBadge />
       <SheffieldSection />
+      <BlogSection />
       <ConsultingSection />
       <BestSellers />
     </>

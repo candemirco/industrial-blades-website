@@ -4,16 +4,16 @@
  * 
  * Environment Variables (.env.local):
  * NEXT_PUBLIC_SITE_URL=https://www.alyabicak.com
- * NEXT_PUBLIC_PHONE=+902121234567
- * NEXT_PUBLIC_WHATSAPP=902121234567
- * NEXT_PUBLIC_EMAIL=info@alyabicak.com
+ * NEXT_PUBLIC_PHONE=+90 (216) 575 17 91
+ * NEXT_PUBLIC_WHATSAPP=905350504613
+ * NEXT_PUBLIC_EMAIL=info@alyatekstil.com
  */
 
 export const siteConfig = {
   // Site Bilgileri
   name: 'Alya Bıçak',
   tagline: 'Endüstriyel Kesici Bıçaklar | Sheffield Kalitesi',
-  description: 'Alya Bıçak - Endüstriyel kesici bıçaklar, makina bıçakları, sanayi jiletleri. Sheffield kalitesi ile üretilmiş profesyonel bıçaklar.',
+  description: 'Alya Bıçak - Endüstriyel kesici bıçaklar, makina bıçakları, sanayi jiletleri. Sheffield kalitesi ile üretilmiş profesyonel bıçaklar. 28+ yıllık tecrübe.',
   
   // URL'ler
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://www.alyabicak.com',
@@ -21,15 +21,26 @@ export const siteConfig = {
   
   // İletişim Bilgileri
   contact: {
-    phone: process.env.NEXT_PUBLIC_PHONE || '+90 212 XXX XX XX',
-    phoneRaw: process.env.NEXT_PUBLIC_PHONE_RAW || '+902121234567',
-    whatsapp: process.env.NEXT_PUBLIC_WHATSAPP || '902121234567',
-    email: process.env.NEXT_PUBLIC_EMAIL || 'info@alyabicak.com',
+    phone: process.env.NEXT_PUBLIC_PHONE || '+90 (216) 575 17 91',
+    phoneRaw: '+902165751791',
+    phoneLines: '3 hat',
+    fax: '+90 (216) 575 17 67',
+    whatsapp: process.env.NEXT_PUBLIC_WHATSAPP || '905350504613',
+    email: process.env.NEXT_PUBLIC_EMAIL || 'info@alyatekstil.com',
     address: {
-      line1: 'İstanbul, Türkiye',
-      line2: '',
+      line1: 'Dudullu Organize Sanayi Bölgesi',
+      line2: 'DES Sanayi Sitesi, 101. Sokak B4 Blok No: 2',
+      postalCode: '34776',
+      district: 'Ümraniye',
       city: 'İstanbul',
       country: 'Türkiye',
+      full: 'Dudullu Organize Sanayi Bölgesi, DES Sanayi Sitesi, 101. Sokak B4 Blok No: 2, 34776 Ümraniye-İstanbul/TÜRKİYE',
+    },
+    workingHours: {
+      weekdays: '09:00 - 18:00',
+      saturday: 'Kapalı',
+      sunday: 'Kapalı',
+      description: 'Pazartesi - Cuma: 09:00 - 18:00 | Hafta sonu: Kapalı',
     },
   },
   
@@ -39,6 +50,7 @@ export const siteConfig = {
     foundedYear: 1996,
     yearsOfExperience: new Date().getFullYear() - 1996,
     exportCountries: 35,
+    distributorRegions: ['Türkiye', 'Orta Doğu', 'Balkanlar', 'Orta Asya'],
   },
   
   // Sosyal Medya
@@ -64,7 +76,10 @@ export const siteConfig = {
       'endüstriyel kesici',
       'martor alternatifi',
       'lutz blade alternatifi',
-    ],
+      'tekstil bıçağı',
+      'ambalaj bıçağı',
+      'gıda sanayi bıçak',
+    ] as const,
     defaultOgImage: '/images/og-image.jpg',
   },
   
@@ -74,6 +89,9 @@ export const siteConfig = {
     enableContactForm: true,
     enableProductSearch: false, // TODO: Arama özelliği eklendiğinde true yap
     enableBlog: false, // TODO: Blog eklendiğinde true yap
+    enableMultiLanguage: false, // TODO: Çoklu dil eklendiğinde true yap
+    enableAnalytics: false, // TODO: Analytics eklendiğinde true yap
+    enableCookieConsent: false, // TODO: Cookie consent eklendiğinde true yap
   },
 } as const;
 
@@ -101,3 +119,7 @@ export function getEmailUrl(subject?: string): string {
   return baseUrl;
 }
 
+export function getGoogleMapsUrl(): string {
+  const address = encodeURIComponent(siteConfig.contact.address.full);
+  return `https://www.google.com/maps/search/?api=1&query=${address}`;
+}

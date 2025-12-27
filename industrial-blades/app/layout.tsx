@@ -4,6 +4,7 @@ import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import WhatsAppButton from '@/components/WhatsAppButton'
+import CookieConsent from '@/components/CookieConsent'
 import { SkipLink } from '@/components/ui'
 import { generateOrganizationSchema } from '@/lib/seo'
 import { siteConfig } from '@/lib/config'
@@ -78,6 +79,7 @@ export default function RootLayout({
         </main>
         <Footer />
         <WhatsAppButton />
+        <CookieConsent />
       </body>
     </html>
   )
