@@ -9,7 +9,7 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
-import { Menu, X, Search, FileText } from 'lucide-react'
+import { Menu, X, Search } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import { categoryService } from '@/lib/services'
 import { mainNavigation, siteConfig } from '@/lib/config'
@@ -80,13 +80,12 @@ export default function Header() {
 
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-3">
-            {/* Katalog */}
+            {/* e-Katalog */}
             <a
               href="/katalog"
-              className="flex items-center gap-2 px-4 py-2 text-steel-700 hover:text-primary-600 font-medium transition-colors"
+              className="px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white text-sm font-medium rounded-lg transition-colors"
             >
-              <FileText className="w-4 h-4" />
-              <span>Katalog</span>
+              e-Katalog
             </a>
             
             {/* WhatsApp */}
