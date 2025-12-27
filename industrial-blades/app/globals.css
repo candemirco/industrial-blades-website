@@ -133,6 +133,29 @@ img {
   height: auto;
 }
 
+/* Image protection - sürükleme ve seçim engelleme */
+img.protected,
+.image-protected img {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  pointer-events: none;
+}
+
+/* Ürün görselleri için koruma */
+.product-image {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 /* Print styles */
 @media print {
   .no-print {
