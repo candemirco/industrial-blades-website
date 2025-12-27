@@ -1,128 +1,227 @@
+/**
+ * Contact Form Component
+ * Zod validation ile form yönetimi
+ */
+
 'use client'
 
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import { Send, CheckCircle, AlertCircle } from 'lucide-react'
+import { contactFormSchema, type ContactFormData, validateForm } from '@/lib/validations'
+import { Button } from '@/components/ui'
+
+type FormErrors = Partial<Record<keyof ContactFormData, string>>
+
+const initialFormData: ContactFormData = {
+  name: '',
+  email: '',
+  phone: '',
+  company: '',
+  subject: '',
+  message: '',
+  consent: false,
+}
 
 export default function ContactForm() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    company: '',
-    subject: '',
-    message: '',
-  })
+  const [formData, setFormData] = useState<ContactFormData>(initialFormData)
+  const [errors, setErrors] = useState<FormErrors>({})
+  const [touched, setTouched] = useState<Partial<Record<keyof ContactFormData, boolean>>>({})
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
 
+  // Tek alan validasyonu
+  const validateField = useCallback((name: keyof ContactFormData, value: unknown) => {
+    const fieldSchema = contactFormSchema.shape[name]
+    const result = fieldSchema.safeParse(value)
+    
+    if (!result.success) {
+      return result.error.issues[0]?.message || 'Geçersiz değer'
+    }
+    return undefined
+  }, [])
+
+  // Form submit
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    
+    // Tüm alanları touched olarak işaretle
+    const allTouched = Object.keys(formData).reduce((acc, key) => {
+      acc[key as keyof ContactFormData] = true
+      return acc
+    }, {} as typeof touched)
+    setTouched(allTouched)
+    
+    // Form validasyonu
+    const validation = validateForm(contactFormSchema, formData)
+    
+    if (!validation.success) {
+      setErrors(validation.errors as FormErrors)
+      return
+    }
+    
     setStatus('sending')
+    setErrors({})
 
-    // TODO: API endpoint'e gönderilecek
-    // Şimdilik simüle ediyoruz
-    setTimeout(() => {
-      setStatus('success')
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        company: '',
-        subject: '',
-        message: '',
-      })
+    try {
+      // TODO: API endpoint'e gönderilecek
+      // Şimdilik simüle ediyoruz
+      await new Promise(resolve => setTimeout(resolve, 1000))
       
-      // 3 saniye sonra başarı mesajını kaldır
-      setTimeout(() => setStatus('idle'), 3000)
-    }, 1000)
+      setStatus('success')
+      setFormData(initialFormData)
+      setTouched({})
+      
+      // 5 saniye sonra başarı mesajını kaldır
+      setTimeout(() => setStatus('idle'), 5000)
+    } catch {
+      setStatus('error')
+    }
   }
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    })
+  // Input değişikliği
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
+    const { name, value, type } = e.target
+    const newValue = type === 'checkbox' ? (e.target as HTMLInputElement).checked : value
+    
+    setFormData(prev => ({ ...prev, [name]: newValue }))
+    
+    // Eğer alan daha önce dokunulmuşsa, anlık validasyon yap
+    if (touched[name as keyof ContactFormData]) {
+      const error = validateField(name as keyof ContactFormData, newValue)
+      setErrors(prev => ({ ...prev, [name]: error }))
+    }
+  }
+
+  // Blur olduğunda validasyon
+  const handleBlur = (
+    e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
+    const { name, value, type } = e.target
+    const fieldValue = type === 'checkbox' ? (e.target as HTMLInputElement).checked : value
+    
+    setTouched(prev => ({ ...prev, [name]: true }))
+    
+    const error = validateField(name as keyof ContactFormData, fieldValue)
+    setErrors(prev => ({ ...prev, [name]: error }))
+  }
+
+  // Input class helper
+  const getInputClass = (fieldName: keyof ContactFormData) => {
+    const baseClass = "w-full px-4 py-3 border rounded-lg transition-all focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+    const hasError = touched[fieldName] && errors[fieldName]
+    
+    return `${baseClass} ${hasError ? 'border-red-500 bg-red-50' : 'border-steel-300'}`
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit} className="space-y-6" noValidate>
       {/* Name */}
       <div>
         <label htmlFor="name" className="block text-sm font-medium text-steel-700 mb-2">
-          Ad Soyad <span className="text-red-500">*</span>
+          Ad Soyad <span className="text-red-500" aria-label="zorunlu">*</span>
         </label>
         <input
           type="text"
           id="name"
           name="name"
-          required
           value={formData.name}
           onChange={handleChange}
-          className="w-full px-4 py-3 border border-steel-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
+          onBlur={handleBlur}
+          className={getInputClass('name')}
           placeholder="Adınız ve soyadınız"
+          aria-invalid={!!errors.name}
+          aria-describedby={errors.name ? 'name-error' : undefined}
         />
+        {touched.name && errors.name && (
+          <p id="name-error" className="mt-1 text-sm text-red-600" role="alert">
+            {errors.name}
+          </p>
+        )}
       </div>
 
       {/* Email */}
       <div>
         <label htmlFor="email" className="block text-sm font-medium text-steel-700 mb-2">
-          E-posta <span className="text-red-500">*</span>
+          E-posta <span className="text-red-500" aria-label="zorunlu">*</span>
         </label>
         <input
           type="email"
           id="email"
           name="email"
-          required
           value={formData.email}
           onChange={handleChange}
-          className="w-full px-4 py-3 border border-steel-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
+          onBlur={handleBlur}
+          className={getInputClass('email')}
           placeholder="ornek@email.com"
+          aria-invalid={!!errors.email}
+          aria-describedby={errors.email ? 'email-error' : undefined}
         />
+        {touched.email && errors.email && (
+          <p id="email-error" className="mt-1 text-sm text-red-600" role="alert">
+            {errors.email}
+          </p>
+        )}
       </div>
 
-      {/* Phone */}
-      <div>
-        <label htmlFor="phone" className="block text-sm font-medium text-steel-700 mb-2">
-          Telefon
-        </label>
-        <input
-          type="tel"
-          id="phone"
-          name="phone"
-          value={formData.phone}
-          onChange={handleChange}
-          className="w-full px-4 py-3 border border-steel-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
-          placeholder="+90 555 123 45 67"
-        />
-      </div>
+      {/* Phone & Company - 2 columns on desktop */}
+      <div className="grid md:grid-cols-2 gap-6">
+        {/* Phone */}
+        <div>
+          <label htmlFor="phone" className="block text-sm font-medium text-steel-700 mb-2">
+            Telefon
+          </label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className={getInputClass('phone')}
+            placeholder="+90 555 123 45 67"
+            aria-invalid={!!errors.phone}
+            aria-describedby={errors.phone ? 'phone-error' : undefined}
+          />
+          {touched.phone && errors.phone && (
+            <p id="phone-error" className="mt-1 text-sm text-red-600" role="alert">
+              {errors.phone}
+            </p>
+          )}
+        </div>
 
-      {/* Company */}
-      <div>
-        <label htmlFor="company" className="block text-sm font-medium text-steel-700 mb-2">
-          Şirket
-        </label>
-        <input
-          type="text"
-          id="company"
-          name="company"
-          value={formData.company}
-          onChange={handleChange}
-          className="w-full px-4 py-3 border border-steel-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
-          placeholder="Şirket adı"
-        />
+        {/* Company */}
+        <div>
+          <label htmlFor="company" className="block text-sm font-medium text-steel-700 mb-2">
+            Şirket
+          </label>
+          <input
+            type="text"
+            id="company"
+            name="company"
+            value={formData.company}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className={getInputClass('company')}
+            placeholder="Şirket adı"
+          />
+        </div>
       </div>
 
       {/* Subject */}
       <div>
         <label htmlFor="subject" className="block text-sm font-medium text-steel-700 mb-2">
-          Konu <span className="text-red-500">*</span>
+          Konu <span className="text-red-500" aria-label="zorunlu">*</span>
         </label>
         <select
           id="subject"
           name="subject"
-          required
           value={formData.subject}
           onChange={handleChange}
-          className="w-full px-4 py-3 border border-steel-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
+          onBlur={handleBlur}
+          className={getInputClass('subject')}
+          aria-invalid={!!errors.subject}
+          aria-describedby={errors.subject ? 'subject-error' : undefined}
         >
           <option value="">Konu seçin</option>
           <option value="fiyat-teklifi">Fiyat Teklifi</option>
@@ -131,29 +230,77 @@ export default function ContactForm() {
           <option value="ozel-uretim">Özel Üretim</option>
           <option value="diger">Diğer</option>
         </select>
+        {touched.subject && errors.subject && (
+          <p id="subject-error" className="mt-1 text-sm text-red-600" role="alert">
+            {errors.subject}
+          </p>
+        )}
       </div>
 
       {/* Message */}
       <div>
         <label htmlFor="message" className="block text-sm font-medium text-steel-700 mb-2">
-          Mesaj <span className="text-red-500">*</span>
+          Mesaj <span className="text-red-500" aria-label="zorunlu">*</span>
         </label>
         <textarea
           id="message"
           name="message"
-          required
           rows={6}
           value={formData.message}
           onChange={handleChange}
-          className="w-full px-4 py-3 border border-steel-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all resize-none"
+          onBlur={handleBlur}
+          className={`${getInputClass('message')} resize-none`}
           placeholder="Mesajınızı buraya yazın..."
+          aria-invalid={!!errors.message}
+          aria-describedby={errors.message ? 'message-error' : undefined}
         />
+        {touched.message && errors.message && (
+          <p id="message-error" className="mt-1 text-sm text-red-600" role="alert">
+            {errors.message}
+          </p>
+        )}
+        <p className="mt-1 text-xs text-steel-500">
+          {formData.message.length}/2000 karakter
+        </p>
       </div>
 
-      {/* Status Message */}
+      {/* KVKK Consent */}
+      <div className="flex items-start gap-3">
+        <input
+          type="checkbox"
+          id="consent"
+          name="consent"
+          checked={formData.consent}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          className="mt-1 w-4 h-4 text-primary-600 border-steel-300 rounded focus:ring-primary-500"
+          aria-invalid={!!errors.consent}
+          aria-describedby={errors.consent ? 'consent-error' : undefined}
+        />
+        <div>
+          <label htmlFor="consent" className="text-sm text-steel-700">
+            <a href="/kvkk" className="text-primary-600 hover:underline">
+              KVKK Aydınlatma Metni
+            </a>
+            &apos;ni okudum ve kişisel verilerimin işlenmesini kabul ediyorum.{' '}
+            <span className="text-red-500" aria-label="zorunlu">*</span>
+          </label>
+          {touched.consent && errors.consent && (
+            <p id="consent-error" className="mt-1 text-sm text-red-600" role="alert">
+              {errors.consent}
+            </p>
+          )}
+        </div>
+      </div>
+
+      {/* Status Messages */}
       {status === 'success' && (
-        <div className="p-4 bg-green-50 border border-green-200 rounded-lg flex items-center gap-3">
-          <CheckCircle className="w-5 h-5 text-green-600" />
+        <div 
+          className="p-4 bg-green-50 border border-green-200 rounded-lg flex items-center gap-3"
+          role="alert"
+          aria-live="polite"
+        >
+          <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
           <p className="text-green-800 font-medium">
             Mesajınız başarıyla gönderildi! En kısa sürede size dönüş yapacağız.
           </p>
@@ -161,8 +308,12 @@ export default function ContactForm() {
       )}
 
       {status === 'error' && (
-        <div className="p-4 bg-red-50 border border-red-200 rounded-lg flex items-center gap-3">
-          <AlertCircle className="w-5 h-5 text-red-600" />
+        <div 
+          className="p-4 bg-red-50 border border-red-200 rounded-lg flex items-center gap-3"
+          role="alert"
+          aria-live="polite"
+        >
+          <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0" />
           <p className="text-red-800 font-medium">
             Bir hata oluştu. Lütfen tekrar deneyin veya telefon ile iletişime geçin.
           </p>
@@ -170,23 +321,17 @@ export default function ContactForm() {
       )}
 
       {/* Submit Button */}
-      <button
+      <Button
         type="submit"
+        size="lg"
+        fullWidth
+        isLoading={status === 'sending'}
+        icon={Send}
+        iconPosition="left"
         disabled={status === 'sending'}
-        className="w-full px-6 py-4 bg-primary-600 hover:bg-primary-700 disabled:bg-steel-400 disabled:cursor-not-allowed text-white font-semibold rounded-lg transition-all flex items-center justify-center gap-2"
       >
-        {status === 'sending' ? (
-          <>
-            <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-            Gönderiliyor...
-          </>
-        ) : (
-          <>
-            <Send className="w-5 h-5" />
-            Mesaj Gönder
-          </>
-        )}
-      </button>
+        {status === 'sending' ? 'Gönderiliyor...' : 'Mesaj Gönder'}
+      </Button>
 
       <p className="text-sm text-steel-500 text-center">
         Formu göndererek{' '}
@@ -198,4 +343,3 @@ export default function ContactForm() {
     </form>
   )
 }
-

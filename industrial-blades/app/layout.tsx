@@ -4,6 +4,7 @@ import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import WhatsAppButton from '@/components/WhatsAppButton'
+import { SkipLink } from '@/components/ui'
 import { generateOrganizationSchema } from '@/lib/seo'
 import { siteConfig } from '@/lib/config'
 
@@ -70,8 +71,9 @@ export default function RootLayout({
         />
       </head>
       <body className={`${montserrat.variable} font-sans antialiased bg-white text-steel-900`}>
+        <SkipLink href="#main-content" />
         <Header />
-        <main className="min-h-screen pt-20 lg:pt-24">
+        <main id="main-content" className="min-h-screen pt-20 lg:pt-24" tabIndex={-1}>
           {children}
         </main>
         <Footer />

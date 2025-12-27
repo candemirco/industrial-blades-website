@@ -53,3 +53,21 @@ export type { SectionHeaderProps, PageHeaderProps } from './SectionHeader'
 export { default as Breadcrumb, generateBreadcrumbSchema } from './Breadcrumb'
 export type { BreadcrumbProps, BreadcrumbItem } from './Breadcrumb'
 
+// Accessibility
+export {
+  SkipLink,
+  VisuallyHidden,
+  LiveRegion,
+  FocusTrap,
+  IconButton,
+  LoadingAnnouncement,
+} from './A11y'
+export type {
+  SkipLinkProps,
+  VisuallyHiddenProps,
+  LiveRegionProps,
+  FocusTrapProps,
+  IconButtonA11yProps,
+  LoadingAnnouncementProps,
+} from './A11y'
+
