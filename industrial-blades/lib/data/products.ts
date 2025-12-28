@@ -5,15 +5,18 @@
  * Yeni ürün eklemek için:
  * 1. PRODUCTS dizisine yeni ürün objesi ekle
  * 2. categoryId ve subcategoryId'nin doğru olduğundan emin ol
+ * 
+ * Scraped ürünler scraped-products.json dosyasından otomatik olarak yüklenir.
  */
 
 import { Product } from '../types';
+import scrapedProductsData from './scraped-products.json';
 
 // =============================================================================
-// ÜRÜNLER
+// MANUEL ÜRÜNLER (El ile eklenen ürünler)
 // =============================================================================
 
-export const PRODUCTS: Product[] = [
+const MANUAL_PRODUCTS: Product[] = [
   // --- İŞ GÜVENLİĞİ & EL BIÇAKLARI ---
   {
     id: 'h006-001-x01',
@@ -266,6 +269,28 @@ export const PRODUCTS: Product[] = [
   },
 ];
 
+// Scraped ürünleri Product tipine dönüştür ve ekle
+const scrapedProducts: Product[] = scrapedProductsData.map((p: any) => ({
+  id: p.id,
+  slug: p.slug,
+  code: p.code,
+  name: p.name,
+  description: p.description,
+  categoryId: p.categoryId,
+  subcategoryId: p.subcategoryId || undefined,
+  image: p.image,
+  variants: p.variants,
+  specifications: p.specifications,
+  features: p.features,
+  applications: p.applications,
+  isFeatured: p.isFeatured,
+  isActive: p.isActive,
+  order: p.order,
+}));
+
+// Tüm ürünleri birleştir (manuel + scraped)
+export const PRODUCTS: Product[] = [...MANUAL_PRODUCTS, ...scrapedProducts];
+
 // =============================================================================
 // YARDIMCI FONKSİYONLAR
 // =============================================================================
@@ -329,6 +354,11 @@ export function getInStockProducts(): Product[] {
   return PRODUCTS.filter(p => 
     p.isActive && p.variants.some(v => v.inStock)
   );
+}
+
+/** Toplam ürün sayısı */
+export function getTotalProductCount(): number {
+  return PRODUCTS.filter(p => p.isActive).length;
 }
 
 
