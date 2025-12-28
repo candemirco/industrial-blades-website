@@ -23,8 +23,8 @@ export default function ConsultingPage() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-steel-900 mb-4">
+            <div className="text-center mb-10">
+              <h2 className="text-2xl md:text-3xl font-semibold text-steel-900 mb-3">
                 Danışmanlık Sürecimiz
               </h2>
               <p className="text-lg text-steel-600">
@@ -138,8 +138,8 @@ export default function ConsultingPage() {
       {/* Services Section */}
       <section className="py-20 bg-steel-50">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-steel-900 mb-4">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl md:text-3xl font-semibold text-steel-900 mb-3">
               Danışmanlık Hizmetlerimiz
             </h2>
           </div>
@@ -187,7 +187,7 @@ export default function ConsultingPage() {
       <section className="py-20 bg-primary-600 text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            <h2 className="text-2xl md:text-3xl font-semibold mb-4">
               Ücretsiz Danışmanlık Alın
             </h2>
             <p className="text-xl text-primary-100 mb-8">

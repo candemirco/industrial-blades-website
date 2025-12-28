@@ -103,8 +103,8 @@ export default function SheffieldKalitesiPage() {
       {/* Quality Points */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-steel-900 mb-4">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-semibold text-steel-900 mb-3">
               Neden Sheffield?
             </h2>
             <p className="text-lg text-steel-600 max-w-2xl mx-auto">
@@ -141,7 +141,7 @@ export default function SheffieldKalitesiPage() {
               <span className="inline-block px-4 py-2 bg-green-700 text-white text-sm font-semibold rounded-full mb-4">
                 Resmi Distribütör
               </span>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              <h2 className="text-2xl md:text-3xl font-semibold mb-4">
                 Durham Duplex İş Ortaklığı
               </h2>
               <p className="text-steel-300 mb-6">

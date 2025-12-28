@@ -48,7 +48,7 @@ export default function SheffieldSection() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left: Content */}
           <div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <h2 className="text-3xl md:text-4xl font-semibold mb-5">
               Sheffield Çelik Kalitesi ile Üretilmiş Bıçaklar
             </h2>
             

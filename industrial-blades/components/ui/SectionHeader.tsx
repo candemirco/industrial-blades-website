@@ -23,9 +23,9 @@ const alignStyles = {
 }
 
 const titleSizes = {
-  sm: 'text-2xl md:text-3xl',
-  md: 'text-3xl md:text-4xl',
-  lg: 'text-4xl md:text-5xl',
+  sm: 'text-xl md:text-2xl',
+  md: 'text-2xl md:text-3xl',
+  lg: 'text-3xl md:text-4xl',
 }
 
 const subtitleSizes = {
@@ -118,7 +118,7 @@ export function PageHeader({
         )}
         
         <div className="max-w-3xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+          <h1 className="text-3xl md:text-4xl font-semibold mb-5">
             {title}
           </h1>
           

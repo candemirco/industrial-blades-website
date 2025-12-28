@@ -78,7 +78,7 @@ export default function ValueProposition() {
           <span className={`inline-block px-4 py-2 text-sm font-semibold rounded-full mb-4 ${USE_VIDEO_BACKGROUND ? 'bg-white/20 text-white' : 'bg-primary-100 text-primary-700'}`}>
             Neden Alya Bıçak?
           </span>
-          <h2 className={`text-3xl md:text-4xl lg:text-5xl font-bold mb-4 ${USE_VIDEO_BACKGROUND ? 'text-white' : 'text-steel-900'}`}>
+          <h2 className={`text-2xl md:text-3xl lg:text-4xl font-semibold mb-4 ${USE_VIDEO_BACKGROUND ? 'text-white' : 'text-steel-900'}`}>
             Kaliteli Hammadde, <br className="hidden md:block" />
             <span className={USE_VIDEO_BACKGROUND ? 'text-primary-400' : 'text-primary-600'}>Uzun Vadede Tasarruf</span>
           </h2>
