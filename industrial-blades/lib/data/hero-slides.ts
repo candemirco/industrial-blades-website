@@ -38,6 +38,17 @@ export const HERO_SLIDES: HeroSlide[] = [
     order: 3,
     isActive: true,
   },
+  {
+    id: 'slide-4',
+    title: 'Kesimin En Güvenilir Hali',
+    subtitle: 'İş Güvenliği & El Bıçakları',
+    description: 'Kesim bitiminde otomatik geri çekilebilen mekanizmasıyla iş kazalarını engeller',
+    image: '/images/squeeze_knife_hero.jpg',
+    ctaText: 'Ürünleri İncele',
+    ctaLink: '/kategoriler/is-guvenligi-el-bicaklari',
+    order: 4,
+    isActive: true,
+  },
 ];
 
 // Yardımcı fonksiyonlar
