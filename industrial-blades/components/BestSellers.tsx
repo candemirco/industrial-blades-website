@@ -71,9 +71,9 @@ export default function BestSellers() {
                       <Package className="w-20 h-20 text-steel-300 group-hover:text-primary-500 transition-colors" />
                     </div>
                     
-                    {/* Badge */}
+                    {/* Badge - Daha ince font */}
                     {product.isFeatured && (
-                      <div className="absolute top-3 left-3 px-3 py-1 bg-yellow-500 text-white text-xs font-semibold rounded-full flex items-center gap-1">
+                      <div className="absolute top-3 left-3 px-3 py-1 bg-yellow-500 text-white text-xs font-medium rounded-full flex items-center gap-1">
                         <Star className="w-3 h-3 fill-current" />
                         Öne Çıkan
                       </div>
@@ -103,9 +103,9 @@ export default function BestSellers() {
                       {product.code}
                     </div>
 
-                    {/* Title */}
+                    {/* Title - Font ağırlığı azaltıldı */}
                     <Link href={`/urunler/${product.slug}`}>
-                      <h3 className="text-lg font-bold text-steel-900 mb-3 line-clamp-2 group-hover:text-primary-600 transition-colors">
+                      <h3 className="text-base font-semibold text-steel-900 mb-3 line-clamp-2 group-hover:text-primary-600 transition-colors">
                         {product.name}
                       </h3>
                     </Link>
