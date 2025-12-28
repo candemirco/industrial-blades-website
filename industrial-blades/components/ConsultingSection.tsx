@@ -43,11 +43,11 @@ export default function ConsultingSection() {
               Uzman Danışmanlık
             </Badge>
             
-            <h2 className="text-3xl md:text-4xl font-semibold text-steel-900 mb-5">
+            <h2 className="text-2xl md:text-3xl font-medium text-steel-900 mb-4">
               Doğru Bıçak Seçimi İçin Profesyonel Destek
             </h2>
             
-            <p className="text-lg text-steel-600 mb-8">
+            <p className="text-base text-steel-600 leading-relaxed mb-8">
               Her malzeme farklı bir kesim tekniği gerektirir. Plastik, metal, kağıt, gıda... 
               Hangi ürünü kesiyorsanız kesin, size en uygun bıçağı bulmanıza yardımcı oluyoruz.
             </p>

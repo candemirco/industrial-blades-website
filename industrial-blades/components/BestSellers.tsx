@@ -26,7 +26,7 @@ export default function BestSellers() {
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-semibold text-steel-900 mb-3">
+          <h2 className="text-2xl md:text-3xl font-medium text-steel-900 mb-2">
             Öne Çıkan Ürünler
           </h2>
           <p className="text-steel-600 max-w-2xl mx-auto">

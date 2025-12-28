@@ -48,11 +48,11 @@ export default function SheffieldSection() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left: Content */}
           <div>
-            <h2 className="text-3xl md:text-4xl font-semibold mb-5">
+            <h2 className="text-2xl md:text-3xl font-medium mb-4">
               Sheffield Çelik Kalitesi ile Üretilmiş Bıçaklar
             </h2>
             
-            <p className="text-lg text-steel-300 mb-8">
+            <p className="text-base text-steel-300 leading-relaxed mb-8">
               Sheffield, yüzyıllardır dünyanın en kaliteli çelik ve bıçak üretim merkezi olarak bilinir. 
               1910&apos;dan bu yana İngiltere&apos;nin kalp merkezinde, precision engineering ile üretilen 
               endüstriyel bıçaklar, gıda güvenliği standartlarına tam uyumluluk ile sizlere sunuluyor.

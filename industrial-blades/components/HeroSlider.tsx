@@ -79,9 +79,9 @@ export default function HeroSlider() {
                     </p>
                   )}
 
-                  {/* Title */}
+                  {/* Title - FISILDER */}
                   <h1 
-                    className={`text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-6 leading-tight transition-all duration-700 ${
+                    className={`text-3xl md:text-4xl lg:text-5xl font-medium text-white mb-6 leading-tight transition-all duration-700 ${
                       index === currentSlide 
                         ? 'translate-y-0 opacity-100' 
                         : 'translate-y-8 opacity-0'
@@ -94,9 +94,9 @@ export default function HeroSlider() {
                     {slide.title}
                   </h1>
 
-                  {/* Description */}
+                  {/* Description - FISILDER */}
                   <p 
-                    className={`text-lg md:text-xl lg:text-2xl text-steel-100 mb-8 transition-all duration-700 ${
+                    className={`text-base md:text-lg lg:text-xl text-steel-100 mb-8 leading-relaxed transition-all duration-700 ${
                       index === currentSlide 
                         ? 'translate-y-0 opacity-100' 
                         : 'translate-y-8 opacity-0'

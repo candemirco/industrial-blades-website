@@ -22,10 +22,10 @@ export default function BlogPage() {
       <section className="bg-gradient-to-br from-steel-900 to-steel-800 text-white py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            <h1 className="text-3xl md:text-4xl font-medium mb-3">
               Bülten
             </h1>
-            <p className="text-xl text-steel-300">
+            <p className="text-base text-steel-300 leading-relaxed">
               Endüstriyel kesiciler hakkında güncel haberler, 
               rehberler ve teknik yazılar
             </p>
@@ -60,7 +60,7 @@ export default function BlogPage() {
       {featuredPosts.length > 0 && (
         <section className="py-12 bg-white">
           <div className="container mx-auto px-4">
-            <h2 className="text-2xl font-bold text-steel-900 mb-8">Öne Çıkanlar</h2>
+            <h2 className="text-xl font-medium text-steel-900 mb-8">Öne Çıkanlar</h2>
             <div className="grid md:grid-cols-2 gap-8">
               {featuredPosts.map((post) => (
                 <article
@@ -106,7 +106,7 @@ export default function BlogPage() {
       {/* All Posts */}
       <section className="py-12">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl font-bold text-steel-900 mb-8">Tüm Yazılar</h2>
+          <h2 className="text-xl font-medium text-steel-900 mb-8">Tüm Yazılar</h2>
           
           {posts.length === 0 ? (
             <div className="text-center py-16 bg-white rounded-xl">

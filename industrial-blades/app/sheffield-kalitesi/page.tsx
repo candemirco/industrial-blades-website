@@ -104,10 +104,10 @@ export default function SheffieldKalitesiPage() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-semibold text-steel-900 mb-3">
+            <h2 className="text-2xl md:text-3xl font-medium text-steel-900 mb-2">
               Neden Sheffield?
             </h2>
-            <p className="text-lg text-steel-600 max-w-2xl mx-auto">
+            <p className="text-base text-steel-600 leading-relaxed max-w-2xl mx-auto">
               Sheffield, yüzyıllardır dünya çelik endüstrisinin kalbi olmuştur.
             </p>
           </div>
@@ -141,10 +141,10 @@ export default function SheffieldKalitesiPage() {
               <span className="inline-block px-4 py-2 bg-green-700 text-white text-sm font-semibold rounded-full mb-4">
                 Resmi Distribütör
               </span>
-              <h2 className="text-2xl md:text-3xl font-semibold mb-4">
+              <h2 className="text-2xl md:text-3xl font-medium mb-4">
                 Durham Duplex İş Ortaklığı
               </h2>
-              <p className="text-steel-300 mb-6">
+              <p className="text-base text-steel-300 leading-relaxed mb-6">
                 Durham Duplex, Sheffield'ın en köklü bıçak üreticilerinden biridir. 
                 Alya olarak, Durham Duplex'in Türkiye ve bölge distribütörüyüz.
               </p>
