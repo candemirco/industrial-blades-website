@@ -3,6 +3,9 @@
  * Clean Architecture - Single Source of Truth for Types
  */
 
+// Genişletilmiş ürün tipleri
+export * from './product.types';
+
 // =============================================================================
 // TEMEL TİPLER
 // =============================================================================

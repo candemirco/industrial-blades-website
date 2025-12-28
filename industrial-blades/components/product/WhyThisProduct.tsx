@@ -1,0 +1,128 @@
+'use client';
+
+import { 
+  Clock, 
+  Shield, 
+  Wrench, 
+  TrendingUp,
+  CheckCircle2,
+  Zap,
+  type LucideIcon 
+} from 'lucide-react';
+import type { ProductBenefit } from '@/lib/types/product.types';
+
+// Icon mapping
+const iconMap: Record<string, LucideIcon> = {
+  Clock,
+  Shield,
+  Wrench,
+  TrendingUp,
+  CheckCircle2,
+  Zap,
+};
+
+// Default benefits (eğer ürün için özel tanımlanmadıysa)
+const DEFAULT_BENEFITS: ProductBenefit[] = [
+  {
+    title: 'Uzun Ömür',
+    description: 'Daha az bıçak değişimi, daha düşük toplam maliyet',
+    icon: 'Clock',
+  },
+  {
+    title: 'Üretim Sürekliliği',
+    description: 'Makine duruş sürelerini minimize eder',
+    icon: 'TrendingUp',
+  },
+  {
+    title: 'Teknik Destek',
+    description: 'Türkiye\'de yetkili distribütör garantisi',
+    icon: 'Wrench',
+  },
+];
+
+interface WhyThisProductProps {
+  benefits?: ProductBenefit[];
+  title?: string;
+}
+
+export function WhyThisProduct({ 
+  benefits = DEFAULT_BENEFITS, 
+  title = 'Neden Bu Ürün?' 
+}: WhyThisProductProps) {
+  const displayBenefits = benefits.length > 0 ? benefits : DEFAULT_BENEFITS;
+
+  return (
+    <section className="py-12">
+      <div className="container mx-auto px-4">
+        {/* Başlık */}
+        <h2 className="text-xl font-semibold text-steel-900 mb-8">
+          {title}
+        </h2>
+        
+        {/* Benefit Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {displayBenefits.map((benefit, index) => {
+            const IconComponent = benefit.icon ? iconMap[benefit.icon] : CheckCircle2;
+            
+            return (
+              <div
+                key={index}
+                className="flex gap-4 p-5 bg-white rounded-lg border border-steel-100 hover:border-steel-200 transition-colors"
+              >
+                {/* Icon Circle */}
+                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-steel-100 flex items-center justify-center">
+                  <IconComponent className="w-5 h-5 text-steel-600" />
+                </div>
+                
+                {/* Content */}
+                <div>
+                  <h3 className="font-medium text-steel-900">
+                    {benefit.title}
+                  </h3>
+                  <p className="mt-1 text-sm text-steel-600 leading-relaxed">
+                    {benefit.description}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// Alternatif: Minimal liste versiyonu
+export function WhyThisProductList({ 
+  benefits = DEFAULT_BENEFITS, 
+  title = 'Neden Bu Ürün?' 
+}: WhyThisProductProps) {
+  const displayBenefits = benefits.length > 0 ? benefits : DEFAULT_BENEFITS;
+
+  return (
+    <section className="py-8">
+      <div className="container mx-auto px-4">
+        <h2 className="text-lg font-medium text-steel-900 mb-4">
+          {title}
+        </h2>
+        
+        <ul className="space-y-3">
+          {displayBenefits.map((benefit, index) => (
+            <li 
+              key={index}
+              className="flex items-start gap-3"
+            >
+              <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary-500 flex-shrink-0" />
+              <div>
+                <span className="font-medium text-steel-800">{benefit.title}</span>
+                <span className="text-steel-500"> — </span>
+                <span className="text-steel-600">{benefit.description}</span>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
