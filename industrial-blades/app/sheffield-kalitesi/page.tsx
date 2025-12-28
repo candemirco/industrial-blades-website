@@ -3,14 +3,12 @@
  * Made in Sheffield markası ve kalite standartları hakkında bilgi
  */
 
-'use client'
-
-import { useState, useEffect, useRef } from 'react'
 import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight, Award, Shield, Globe, Factory, CheckCircle } from 'lucide-react'
 import { generateMetadata as generateSeoMetadata } from '@/lib/seo'
+import VideoBackground from '@/components/VideoBackground'
 
 export const metadata: Metadata = generateSeoMetadata({
   title: 'Sheffield Kalitesi',
@@ -43,50 +41,17 @@ const qualityPoints = [
 ]
 
 export default function SheffieldKalitesiPage() {
-  const [isVideoLoaded, setIsVideoLoaded] = useState(false)
-  const videoRef = useRef<HTMLVideoElement>(null)
-
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.addEventListener('loadeddata', () => {
-        setIsVideoLoaded(true)
-      })
-    }
-  }, [])
-
   return (
     <div className="min-h-screen">
       {/* Hero Section with Video */}
       <section className="relative min-h-[85vh] flex items-center text-white overflow-hidden">
         {/* Video Background with Progressive Loading */}
-        <div className="absolute inset-0 z-0">
-          {/* Poster Image - Anında gösterilir */}
-          <div 
-            className="absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000"
-            style={{ 
-              backgroundImage: 'url(/images/hero-bg-poster.jpg)',
-              opacity: isVideoLoaded ? 0 : 1,
-              pointerEvents: isVideoLoaded ? 'none' : 'auto'
-            }}
-          />
-          
-          {/* Video - Arka planda yüklenir */}
-          <video
-            ref={videoRef}
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="none"
-            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000"
-            style={{ opacity: isVideoLoaded ? 1 : 0 }}
-          >
-            <source src="/videos/hero-bg.mp4" type="video/mp4" />
-          </video>
-          
-          {/* Video Overlay */}
-          <div className="absolute inset-0 bg-steel-900/70" />
-        </div>
+        <VideoBackground
+          videoSrc="/videos/hero-bg.mp4"
+          posterSrc="/images/hero-bg-poster.jpg"
+          overlay={true}
+          overlayOpacity={70}
+        />
 
         <div className="container mx-auto px-4 relative z-10 py-24 lg:py-32">
           <div className="max-w-4xl mx-auto text-center">
