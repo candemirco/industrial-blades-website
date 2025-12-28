@@ -34,7 +34,7 @@ export default function AboutPage() {
                 Endüstrinin Güvenilir Tedarikçisi
               </h2>
               
-              <div className="space-y-4 text-steel-600 text-lg">
+              <div className="space-y-4 text-steel-600 leading-relaxed">
                 <p>
                   <strong className="text-steel-900">Alya</strong> olarak 28 yılı aşkın süredir 
                   endüstriyel kesiciler tedarik ediyoruz. Endüstrinin hemen hemen her sektörüne 
@@ -52,18 +52,18 @@ export default function AboutPage() {
                 </p>
               </div>
 
-              {/* Ana Site Linki */}
-              <div className="mt-8 p-6 bg-steel-50 rounded-xl border border-steel-200">
-                <p className="text-steel-600 mb-4">
-                  Tekstil makineleri ve yedek parçalar için ana sitemizi ziyaret edin:
+              {/* Ana Site Linki - ZARİF */}
+              <div className="mt-6 pt-6 border-t border-steel-200">
+                <p className="text-sm text-steel-500 mb-2">
+                  Tekstil makineleri ve yedek parçalar:
                 </p>
                 <a
                   href="https://www.alyatekstil.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-steel-900 hover:bg-primary-600 text-white font-semibold rounded-lg transition-colors"
+                  className="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700 font-medium transition-colors"
                 >
-                  <Globe className="w-5 h-5" />
+                  <Globe className="w-4 h-4" />
                   www.alyatekstil.com
                 </a>
               </div>

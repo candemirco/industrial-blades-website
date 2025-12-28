@@ -156,7 +156,7 @@ export default function ConsultingPage() {
               },
               {
                 title: 'Teknik Destek',
-                desc: 'Kurulum ve kullanım konusunda rehberlik',
+                desc: 'Çelik kalitesi, sertlik ve malzeme konusunda rehberlik',
               },
               {
                 title: 'Performans Optimizasyonu',
@@ -167,8 +167,8 @@ export default function ConsultingPage() {
                 desc: 'Standart ürünler dışında özel tasarım',
               },
               {
-                title: 'Bakım ve Onarım',
-                desc: 'Bıçak bakımı ve yeniden bilenme hizmetleri',
+                title: 'Satış Sonrası Destek',
+                desc: 'Ürün kullanımı ve teknik sorular için destek',
               },
             ].map((service, index) => (
               <div key={index} className="bg-white p-6 rounded-xl shadow-sm">

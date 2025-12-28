@@ -88,30 +88,30 @@ export default function ValueProposition() {
           </p>
         </div>
 
-        {/* Value Props Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Value Props Grid - KOMPAKT */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
           {valueProps.map((prop, index) => (
             <div 
               key={prop.title}
-              className="group relative bg-white border border-steel-100 rounded-xl p-6 transition-all duration-300 hover:border-primary-200 hover:shadow-card"
+              className="group relative bg-white/95 backdrop-blur-sm border border-white/20 rounded-lg p-4 transition-all duration-300 hover:border-primary-200 hover:shadow-sm"
             >
-              {/* Highlight Badge */}
-              <span className="absolute top-4 right-4 px-2 py-1 bg-primary-600 text-white text-xs font-medium rounded-full">
+              {/* Highlight Badge - Küçültüldü */}
+              <span className="absolute top-3 right-3 px-2 py-0.5 bg-primary-600 text-white text-xs font-medium rounded">
                 {prop.highlight}
               </span>
               
-              {/* Icon */}
-              <div className="w-12 h-12 bg-primary-50 rounded-lg flex items-center justify-center mb-5 group-hover:bg-primary-100 transition-colors">
-                <prop.icon className="w-6 h-6 text-primary-600" />
+              {/* Icon - Küçültüldü */}
+              <div className="w-10 h-10 bg-primary-50 rounded-lg flex items-center justify-center mb-3 group-hover:bg-primary-100 transition-colors">
+                <prop.icon className="w-5 h-5 text-primary-600" />
               </div>
               
-              {/* Title */}
-              <h3 className="text-lg font-semibold text-steel-900 mb-2">
+              {/* Title - Küçültüldü */}
+              <h3 className="text-base font-semibold text-steel-900 mb-1.5">
                 {prop.title}
               </h3>
               
-              {/* Description */}
-              <p className="text-steel-500 text-sm font-light leading-relaxed">
+              {/* Description - Küçültüldü */}
+              <p className="text-steel-600 text-xs leading-relaxed">
                 {prop.description}
               </p>
             </div>

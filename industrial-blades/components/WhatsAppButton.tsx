@@ -141,7 +141,7 @@ export default function WhatsAppButton() {
                   </div>
                   <div>
                     <p className="font-semibold">Canlı Destek</p>
-                    <p className="text-xs text-white/80">Genellikle anında yanıt</p>
+                    <p className="text-xs text-white/80">Anında yanıt</p>
                   </div>
                 </div>
                 <button

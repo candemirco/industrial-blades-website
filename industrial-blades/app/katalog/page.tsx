@@ -1,6 +1,6 @@
 import { generateMetadata as genMeta } from '@/lib/seo'
-import { FileText, Download, Eye } from 'lucide-react'
-import Link from 'next/link'
+import { Download, Eye } from 'lucide-react'
+import Image from 'next/image'
 
 export const metadata = genMeta({
   title: 'e-Katalog',
@@ -13,127 +13,104 @@ export const metadata = genMeta({
 const CATALOGS = [
   {
     id: 'sanayi-jiletleri',
-    title: 'Sanayi Jiletleri Ürün Kataloğu',
-    description: 'Ok bıçaklar, dilme jiletleri, trapez jiletler ve tüm sanayi jiletleri',
-    category: 'Sanayi Jiletleri',
+    title: 'Sanayi Jiletleri',
+    description: 'Ok bıçaklar, dilme jiletleri, trapez jiletler',
     pdfUrl: '/catalogs/Sanayi-Jiletleri-Urun-Katalogu.pdf',
-    color: 'from-blue-600 to-blue-800',
+    previewImage: '/catalogs/previews/sanayi-jiletleri.jpg',
   },
   {
     id: 'makine-bicaklari',
-    title: 'Makine Bıçakları Ürün Kataloğu',
-    description: 'Giyotin bıçakları, dilme bıçakları ve özel makina bıçakları',
-    category: 'Makine Bıçakları',
+    title: 'Makine Bıçakları',
+    description: 'Giyotin bıçakları, dilme bıçakları',
     pdfUrl: '/catalogs/Makine-Bicaklari-Urun-Katalogu.pdf',
-    color: 'from-steel-700 to-steel-900',
+    previewImage: '/catalogs/previews/makine-bicaklari.jpg',
   },
   {
     id: 'is-guvenligi-el-bicaklari',
-    title: 'İş Güvenliği & El Bıçakları Kataloğu',
-    description: 'Güvenlik bıçakları, maket bıçakları ve ergonomik el aletleri',
-    category: 'İş Güvenliği',
+    title: 'İş Güvenliği & El Bıçakları',
+    description: 'Güvenlik bıçakları, maket bıçakları',
     pdfUrl: '/catalogs/Is-Guvenligi-El-Bicaklari-Urun-Katalogu.pdf',
-    color: 'from-orange-500 to-orange-700',
+    previewImage: '/catalogs/previews/is-guvenligi.jpg',
   },
   {
     id: 'vakum-paketleme',
-    title: 'Vakum Paketleme Bıçakları Kataloğu',
-    description: 'Gıda sanayi için vakum paketleme ve kesim bıçakları',
-    category: 'Vakum Paketleme',
+    title: 'Vakum Paketleme Bıçakları',
+    description: 'Gıda sanayi kesim bıçakları',
     pdfUrl: '/catalogs/Vakum-PaketlemeBicaklari-Katalugu.pdf',
-    color: 'from-green-600 to-green-800',
+    previewImage: '/catalogs/previews/vakum-paketleme.jpg',
   },
 ]
 
 export default function CatalogPage() {
   return (
-    <div className="min-h-screen bg-steel-50">
-      {/* Hero */}
-      <section className="bg-gradient-to-br from-steel-900 to-steel-800 text-white py-16">
+    <div className="min-h-screen bg-white">
+      {/* Minimal Hero */}
+      <section className="py-12 bg-steel-50 border-b border-steel-200">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              e-Katalog
+          <div className="max-w-2xl">
+            <h1 className="text-3xl font-semibold text-steel-900 mb-2">
+              Ürün Katalogları
             </h1>
-            <p className="text-xl text-steel-300">
-              Ürün kataloglarımızı online görüntüleyin veya indirin
+            <p className="text-steel-600">
+              PDF kataloglarımızı görüntüleyin veya indirin
             </p>
           </div>
         </div>
       </section>
 
-      {/* Catalogs Grid */}
-      <section className="py-16">
+      {/* Catalog Grid - PDF Preview */}
+      <section className="py-12">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {CATALOGS.map((catalog) => (
               <div
                 key={catalog.id}
-                className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group"
+                className="group bg-white border border-steel-200 rounded-lg overflow-hidden hover:border-primary-200 hover:shadow-sm transition-all"
               >
-                {/* Catalog Header */}
-                <div className={`relative h-40 bg-gradient-to-br ${catalog.color} flex items-center justify-center`}>
-                  <FileText className="w-16 h-16 text-white/30" />
-                  <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 bg-white/20 text-white text-xs font-medium rounded-full">
-                      {catalog.category}
-                    </span>
-                  </div>
+                {/* PDF Preview Image */}
+                <div className="relative aspect-[3/4] bg-steel-100 overflow-hidden">
+                  <Image
+                    src={catalog.previewImage}
+                    alt={catalog.title}
+                    fill
+                    className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                  />
+                  {/* Overlay on Hover */}
+                  <div className="absolute inset-0 bg-steel-900/0 group-hover:bg-steel-900/40 transition-colors duration-300" />
                 </div>
 
                 {/* Content */}
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-steel-900 mb-2 group-hover:text-primary-600 transition-colors">
+                <div className="p-4">
+                  <h3 className="text-base font-medium text-steel-900 mb-1">
                     {catalog.title}
                   </h3>
-                  <p className="text-steel-600 text-sm mb-6">
+                  <p className="text-xs text-steel-500 mb-3">
                     {catalog.description}
                   </p>
 
-                  {/* Actions */}
-                  <div className="flex gap-3">
+                  {/* Actions - Minimal & Same Size */}
+                  <div className="flex gap-2">
                     <a
                       href={catalog.pdfUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg transition-colors"
+                      className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 bg-steel-900 hover:bg-steel-800 text-white text-xs font-medium rounded transition-colors"
                     >
-                      <Eye className="w-4 h-4" />
+                      <Eye className="w-3.5 h-3.5" />
                       Görüntüle
                     </a>
                     <a
                       href={catalog.pdfUrl}
                       download
-                      className="flex items-center justify-center gap-2 px-4 py-3 border-2 border-steel-300 hover:border-primary-600 hover:text-primary-600 text-steel-700 font-medium rounded-lg transition-colors"
+                      className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 border border-steel-300 hover:border-steel-400 hover:bg-steel-50 text-steel-700 text-xs font-medium rounded transition-colors"
                     >
-                      <Download className="w-4 h-4" />
+                      <Download className="w-3.5 h-3.5" />
                       İndir
                     </a>
                   </div>
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Info Section */}
-      <section className="py-12 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-2xl font-bold text-steel-900 mb-4">
-              Güncel Kataloglar
-            </h2>
-            <p className="text-steel-600 mb-6">
-              Tüm kataloglarımız düzenli olarak güncellenmektedir. 
-              Özel ürün talepleriniz için bizimle iletişime geçebilirsiniz.
-            </p>
-            <Link
-              href="/iletisim"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-steel-900 hover:bg-steel-800 text-white font-medium rounded-lg transition-colors"
-            >
-              İletişime Geç
-            </Link>
           </div>
         </div>
       </section>
