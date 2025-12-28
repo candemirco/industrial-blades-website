@@ -19,14 +19,14 @@ export default function Footer() {
   return (
     <footer className="bg-steel-900 text-white">
       {/* Main Footer */}
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="container mx-auto px-4 py-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {/* Company Info */}
           <div>
-            <h3 className="text-lg font-semibold text-white mb-6">
+            <h3 className="text-sm font-medium text-white mb-4 uppercase tracking-wide">
               {siteConfig.company.legalName}
             </h3>
-            <p className="text-steel-400 mb-4">
+            <p className="text-steel-400 text-sm mb-3 leading-relaxed">
               {siteConfig.company.yearsOfExperience} yılı aşkın süredir endüstriyel kesiciler tedarik ediyoruz. 
               Sheffield kalitesinde profesyonel çözümler.
             </p>
@@ -34,23 +34,23 @@ export default function Footer() {
               href={siteConfig.mainSiteUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-primary-400 hover:text-primary-300 transition-colors mb-6"
+              className="inline-flex items-center gap-1.5 text-sm text-primary-400 hover:text-primary-300 transition-colors mb-4"
             >
-              <Globe className="w-4 h-4" />
+              <Globe className="w-3.5 h-3.5" />
               www.alyatekstil.com
             </a>
             
             {/* Social Links */}
-            <div className="flex gap-3">
+            <div className="flex gap-2">
               {siteConfig.social.facebook && (
                 <a 
                   href={siteConfig.social.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 bg-steel-800 hover:bg-primary-600 rounded-full flex items-center justify-center transition-colors"
+                  className="w-8 h-8 bg-steel-800 hover:bg-primary-600 rounded-full flex items-center justify-center transition-colors"
                   aria-label="Facebook"
                 >
-                  <Facebook className="w-5 h-5" />
+                  <Facebook className="w-4 h-4" />
                 </a>
               )}
               {siteConfig.social.instagram && (
@@ -58,10 +58,10 @@ export default function Footer() {
                   href={siteConfig.social.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 bg-steel-800 hover:bg-primary-600 rounded-full flex items-center justify-center transition-colors"
+                  className="w-8 h-8 bg-steel-800 hover:bg-primary-600 rounded-full flex items-center justify-center transition-colors"
                   aria-label="Instagram"
                 >
-                  <Instagram className="w-5 h-5" />
+                  <Instagram className="w-4 h-4" />
                 </a>
               )}
               {siteConfig.social.linkedin && (
@@ -69,23 +69,23 @@ export default function Footer() {
                   href={siteConfig.social.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 bg-steel-800 hover:bg-primary-600 rounded-full flex items-center justify-center transition-colors"
+                  className="w-8 h-8 bg-steel-800 hover:bg-primary-600 rounded-full flex items-center justify-center transition-colors"
                   aria-label="LinkedIn"
                 >
-                  <Linkedin className="w-5 h-5" />
+                  <Linkedin className="w-4 h-4" />
                 </a>
               )}
               {/* Placeholder sosyal medya butonları - henüz link yok */}
               {!siteConfig.social.facebook && !siteConfig.social.instagram && !siteConfig.social.linkedin && (
                 <>
-                  <span className="w-10 h-10 bg-steel-800 rounded-full flex items-center justify-center opacity-50 cursor-not-allowed">
-                    <Facebook className="w-5 h-5" />
+                  <span className="w-8 h-8 bg-steel-800 rounded-full flex items-center justify-center opacity-50 cursor-not-allowed">
+                    <Facebook className="w-4 h-4" />
                   </span>
-                  <span className="w-10 h-10 bg-steel-800 rounded-full flex items-center justify-center opacity-50 cursor-not-allowed">
-                    <Instagram className="w-5 h-5" />
+                  <span className="w-8 h-8 bg-steel-800 rounded-full flex items-center justify-center opacity-50 cursor-not-allowed">
+                    <Instagram className="w-4 h-4" />
                   </span>
-                  <span className="w-10 h-10 bg-steel-800 rounded-full flex items-center justify-center opacity-50 cursor-not-allowed">
-                    <Linkedin className="w-5 h-5" />
+                  <span className="w-8 h-8 bg-steel-800 rounded-full flex items-center justify-center opacity-50 cursor-not-allowed">
+                    <Linkedin className="w-4 h-4" />
                   </span>
                 </>
               )}
@@ -94,13 +94,13 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Hızlı Erişim</h3>
-            <ul className="space-y-2">
+            <h3 className="text-sm font-medium mb-3 uppercase tracking-wide">Hızlı Erişim</h3>
+            <ul className="space-y-1.5">
               {footerNavigation.quickLinks.map((link) => (
                 <li key={link.href}>
                   <Link 
                     href={link.href} 
-                    className="text-steel-400 hover:text-white transition-colors"
+                    className="text-steel-400 text-sm hover:text-white transition-colors"
                   >
                     {link.title}
                   </Link>
@@ -111,13 +111,13 @@ export default function Footer() {
 
           {/* Categories */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Kategoriler</h3>
-            <ul className="space-y-2">
+            <h3 className="text-sm font-medium mb-3 uppercase tracking-wide">Kategoriler</h3>
+            <ul className="space-y-1.5">
               {categories.map((category) => (
                 <li key={category.id}>
                   <Link 
                     href={`/kategoriler/${category.slug}`} 
-                    className="text-steel-400 hover:text-white transition-colors"
+                    className="text-steel-400 text-sm hover:text-white transition-colors"
                   >
                     {category.name}
                   </Link>
@@ -128,28 +128,28 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">İletişim</h3>
-            <ul className="space-y-3">
-              <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-primary-500 flex-shrink-0 mt-1" />
-                <span className="text-steel-400">
+            <h3 className="text-sm font-medium mb-3 uppercase tracking-wide">İletişim</h3>
+            <ul className="space-y-2">
+              <li className="flex items-start gap-2">
+                <MapPin className="w-4 h-4 text-primary-500 flex-shrink-0 mt-0.5" />
+                <span className="text-steel-400 text-sm">
                   {siteConfig.contact.address.line1}
                 </span>
               </li>
-              <li className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-primary-500 flex-shrink-0" />
+              <li className="flex items-center gap-2">
+                <Phone className="w-4 h-4 text-primary-500 flex-shrink-0" />
                 <a 
                   href={getPhoneUrl()} 
-                  className="text-steel-400 hover:text-white transition-colors"
+                  className="text-steel-400 text-sm hover:text-white transition-colors"
                 >
                   {siteConfig.contact.phone}
                 </a>
               </li>
-              <li className="flex items-center gap-3">
-                <Mail className="w-5 h-5 text-primary-500 flex-shrink-0" />
+              <li className="flex items-center gap-2">
+                <Mail className="w-4 h-4 text-primary-500 flex-shrink-0" />
                 <a 
                   href={getEmailUrl()} 
-                  className="text-steel-400 hover:text-white transition-colors"
+                  className="text-steel-400 text-sm hover:text-white transition-colors"
                 >
                   {siteConfig.contact.email}
                 </a>
@@ -157,7 +157,7 @@ export default function Footer() {
             </ul>
 
             {/* WhatsApp Button */}
-            <div className="mt-4">
+            <div className="mt-3">
               <Button 
                 href={getWhatsAppUrl()} 
                 variant="whatsapp" 
