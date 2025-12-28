@@ -25,9 +25,17 @@ export default function VideoBackground({
 
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.addEventListener('loadeddata', () => {
+      const handleLoadedData = () => {
         setIsVideoLoaded(true)
-      })
+      }
+      videoRef.current.addEventListener('loadeddata', handleLoadedData)
+      
+      // Cleanup
+      return () => {
+        if (videoRef.current) {
+          videoRef.current.removeEventListener('loadeddata', handleLoadedData)
+        }
+      }
     }
   }, [])
 
@@ -50,7 +58,7 @@ export default function VideoBackground({
         loop
         muted
         playsInline
-        preload="none"
+        preload="auto"
         className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000"
         style={{ opacity: isVideoLoaded ? 1 : 0 }}
       >
@@ -61,7 +69,7 @@ export default function VideoBackground({
       {overlay && (
         <div 
           className="absolute inset-0 bg-steel-900" 
-          style={{ opacity: overlayOpacity / 100 * 100 }}
+          style={{ opacity: overlayOpacity / 100 }}
         />
       )}
     </div>
