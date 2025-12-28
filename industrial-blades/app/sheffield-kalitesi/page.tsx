@@ -3,6 +3,9 @@
  * Made in Sheffield markası ve kalite standartları hakkında bilgi
  */
 
+'use client'
+
+import { useState, useEffect, useRef } from 'react'
 import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -40,21 +43,47 @@ const qualityPoints = [
 ]
 
 export default function SheffieldKalitesiPage() {
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false)
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.addEventListener('loadeddata', () => {
+        setIsVideoLoaded(true)
+      })
+    }
+  }, [])
+
   return (
     <div className="min-h-screen">
       {/* Hero Section with Video */}
       <section className="relative min-h-[85vh] flex items-center text-white overflow-hidden">
-        {/* Video Background */}
+        {/* Video Background with Progressive Loading */}
         <div className="absolute inset-0 z-0">
+          {/* Poster Image - Anında gösterilir */}
+          <div 
+            className="absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000"
+            style={{ 
+              backgroundImage: 'url(/images/hero-bg-poster.jpg)',
+              opacity: isVideoLoaded ? 0 : 1,
+              pointerEvents: isVideoLoaded ? 'none' : 'auto'
+            }}
+          />
+          
+          {/* Video - Arka planda yüklenir */}
           <video
+            ref={videoRef}
             autoPlay
             loop
             muted
             playsInline
-            className="absolute inset-0 w-full h-full object-cover"
+            preload="none"
+            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000"
+            style={{ opacity: isVideoLoaded ? 1 : 0 }}
           >
             <source src="/videos/hero-bg.mp4" type="video/mp4" />
           </video>
+          
           {/* Video Overlay */}
           <div className="absolute inset-0 bg-steel-900/70" />
         </div>
