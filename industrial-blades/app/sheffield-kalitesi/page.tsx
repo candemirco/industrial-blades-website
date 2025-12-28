@@ -186,29 +186,29 @@ export default function SheffieldKalitesiPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-12 bg-primary-600 text-white">
+      {/* CTA Section - Minimal ve uyumlu */}
+      <section className="py-10 bg-steel-50 border-t border-steel-200">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
-              <h2 className="text-2xl md:text-3xl font-bold mb-2">
+              <h2 className="text-xl md:text-2xl font-semibold text-steel-900 mb-1">
                 Sheffield Kalitesini Deneyimleyin
               </h2>
-              <p className="text-primary-100">
+              <p className="text-steel-600 text-sm">
                 Endüstriyel kesicilerde en yüksek kalite standardı için bizimle iletişime geçin.
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
               <Link
                 href="/iletisim"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-white text-primary-600 font-semibold rounded-lg hover:bg-steel-50 transition-all"
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-steel-900 text-white text-sm font-medium rounded-lg hover:bg-steel-800 transition-all"
               >
                 İletişime Geçin
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 href="/kategoriler"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-primary-700 hover:bg-primary-800 font-semibold rounded-lg transition-all"
+                className="inline-flex items-center gap-2 px-5 py-2.5 border border-steel-300 text-steel-700 text-sm font-medium rounded-lg hover:bg-steel-100 transition-all"
               >
                 Ürünleri İncele
               </Link>
