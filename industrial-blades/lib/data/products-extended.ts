@@ -13,7 +13,7 @@ export const PRODUCTS_EXTENDED: ProductExtended[] = [
   // --- İŞ GÜVENLİĞİ EL BIÇAKLARI ---
   {
     id: 'h006-001-x01',
-    slug: 'retro-light-knife',
+    slug: 'h006-001-x01-retro-light-knife',
     code: 'H006 001 X01',
     name: 'RETRO LIGHT KNIFE',
     subtitle: 'Döküm Metal El Bıçağı',
@@ -130,7 +130,7 @@ export const PRODUCTS_EXTENDED: ProductExtended[] = [
   
   {
     id: 'h008-001-a03',
-    slug: 'auto-retract-knife',
+    slug: 'h008-001-a03-auto-retract',
     code: 'H008 001 A03',
     name: 'AUTO RETRACT',
     subtitle: 'Otomatik Geri Çekilebilir El Bıçağı',

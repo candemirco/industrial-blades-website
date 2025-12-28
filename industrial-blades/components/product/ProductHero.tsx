@@ -167,7 +167,7 @@ export function ProductHero({ product }: ProductHeroProps) {
             {/* CTA Butonları */}
             <div className="mt-8 flex flex-col sm:flex-row gap-3">
               <a
-                href="/iletisim"
+                href={`mailto:${siteConfig.contact.email}?subject=Teklif Talebi: ${product.code} - ${product.name}&body=Merhaba,%0A%0A${product.code} - ${product.name} ürünü için teklif almak istiyorum.%0A%0ASaygılarımla`}
                 className="flex items-center justify-center gap-2 px-6 py-3 bg-steel-900 text-white font-medium rounded-lg hover:bg-steel-800 transition-colors"
               >
                 <FileText className="w-5 h-5" />
