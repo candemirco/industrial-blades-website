@@ -7,6 +7,9 @@ import {
   TrendingUp,
   CheckCircle2,
   Zap,
+  Target,
+  Settings,
+  Gauge,
   type LucideIcon 
 } from 'lucide-react';
 import type { ProductBenefit } from '@/lib/types/product.types';
@@ -19,6 +22,9 @@ const iconMap: Record<string, LucideIcon> = {
   TrendingUp,
   CheckCircle2,
   Zap,
+  Target,
+  Settings,
+  Gauge,
 };
 
 // Default benefits (eğer ürün için özel tanımlanmadıysa)

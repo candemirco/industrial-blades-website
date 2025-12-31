@@ -30,6 +30,7 @@ export const SUBCATEGORIES: Record<string, SubCategory> = {
     slug: '3-delikli-dilme-jiletleri',
     name: '3 Delikli Dilme Jiletleri',
     description: 'Endüstri standardı 3 delikli jiletler',
+    image: '/images/3-delikli titanyum kaplamalı jilet.jpg',
     parentId: 'sanayi-jiletleri',
     order: 2,
     isActive: true,

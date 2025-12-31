@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Eye, Star, ArrowRight, ChevronLeft, ChevronRight, Package } from 'lucide-react'
 import { productService } from '@/lib/services'
 
@@ -67,20 +68,30 @@ export default function BestSellers() {
                 >
                   {/* Image Container */}
                   <div className="relative h-64 bg-gradient-to-br from-steel-100 to-steel-200 overflow-hidden">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <Package className="w-20 h-20 text-steel-300 group-hover:text-primary-500 transition-colors" />
-                    </div>
+                    {product.image ? (
+                      <Image
+                        src={product.image}
+                        alt={product.name}
+                        fill
+                        className="object-contain p-6 group-hover:scale-110 transition-transform duration-500"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      />
+                    ) : (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <Package className="w-20 h-20 text-steel-300 group-hover:text-primary-500 transition-colors" />
+                      </div>
+                    )}
                     
                     {/* Badge - Daha ince font */}
                     {product.isFeatured && (
-                      <div className="absolute top-3 left-3 px-3 py-1 bg-yellow-500 text-white text-xs font-medium rounded-full flex items-center gap-1">
+                      <div className="absolute top-3 left-3 px-3 py-1 bg-yellow-500 text-white text-xs font-medium rounded-full flex items-center gap-1 z-10">
                         <Star className="w-3 h-3 fill-current" />
                         Öne Çıkan
                       </div>
                     )}
 
                     {/* Quick View */}
-                    <div className="absolute inset-0 bg-steel-900/0 group-hover:bg-steel-900/40 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+                    <div className="absolute inset-0 bg-steel-900/0 group-hover:bg-steel-900/40 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100 z-10">
                       <Link
                         href={`/urunler/${product.slug}`}
                         className="px-6 py-3 bg-white hover:bg-primary-600 hover:text-white text-steel-900 rounded-lg font-semibold transition-all flex items-center gap-2"

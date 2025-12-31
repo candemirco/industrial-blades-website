@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronRight } from 'lucide-react'
 import { CategoryView } from '@/lib/types'
 import Link from 'next/link'
+import Image from 'next/image'
 
 interface MegaMenuProps {
   categories: CategoryView[]
@@ -149,21 +150,40 @@ export default function MegaMenu({ categories, isOpen, onClose }: MegaMenuProps)
                                 <Link
                                   key={subcategory.id}
                                   href={`/kategoriler/${category.slug}/${subcategory.slug}`}
-                                  className="group p-4 rounded-lg border border-gray-200 hover:border-primary-300 hover:bg-primary-50 transition-all duration-200"
+                                  className="group relative overflow-hidden rounded-lg border border-gray-200 hover:border-primary-300 hover:shadow-lg transition-all duration-300 min-h-[140px]"
                                   onClick={() => {
                                     onClose()
                                   }}
                                 >
-                                  <h4 className="font-semibold text-gray-900 group-hover:text-primary-600 mb-1">
-                                    {subcategory.name}
-                                  </h4>
-                                  {subcategory.description && (
-                                    <p className="text-sm text-gray-600 line-clamp-2">
-                                      {subcategory.description}
-                                    </p>
+                                  {/* Arka plan görseli */}
+                                  {subcategory.image && (
+                                    <div className="absolute inset-0 z-0">
+                                      <Image
+                                        src={subcategory.image}
+                                        alt={subcategory.name}
+                                        fill
+                                        className="object-cover opacity-30 group-hover:opacity-40 group-hover:scale-110 transition-all duration-500"
+                                        sizes="(max-width: 768px) 100vw, 33vw"
+                                      />
+                                      <div className="absolute inset-0 bg-gradient-to-br from-white/95 via-white/85 to-white/70" />
+                                    </div>
                                   )}
-                                  <div className="mt-2 text-sm text-gray-500">
-                                    {subcategory.productCount} ürün
+                                  
+                                  {/* İçerik */}
+                                  <div className="relative z-10 p-4 h-full flex flex-col justify-between">
+                                    <div>
+                                      <h4 className="font-semibold text-gray-900 group-hover:text-primary-600 mb-1">
+                                        {subcategory.name}
+                                      </h4>
+                                      {subcategory.description && (
+                                        <p className="text-sm text-gray-600 line-clamp-2">
+                                          {subcategory.description}
+                                        </p>
+                                      )}
+                                    </div>
+                                    <div className="mt-2 text-sm font-medium text-primary-600">
+                                      {subcategory.productCount} ürün
+                                    </div>
                                   </div>
                                 </Link>
                               ))}

@@ -193,6 +193,118 @@ export const PRODUCTS_EXTENDED: ProductExtended[] = [
     inStock: true,
     order: 2,
   },
+  
+  // --- SANAYİ JİLETLERİ ---
+  {
+    id: '3-delikli-jilet-020',
+    slug: '3-delikli-dilme-jileti-020mm',
+    code: '3DJ-020',
+    name: '3 Delikli Dilme Jileti',
+    subtitle: 'Titanyum Kaplamalı - 0.20mm',
+    
+    categoryId: 'sanayi-jiletleri',
+    subcategoryId: '3-delikli-dilme',
+    tags: ['3 delikli', 'dilme jileti', 'titanyum kaplama', 'endüstriyel jilet', 'sheffield'],
+    
+    shortDescription: 'Sheffield çeliğinden üretilmiş, titanyum kaplamalı 3 delikli dilme jileti. Tekstil, kağıt ve film kesimi için yüksek performanslı endüstriyel jilet.',
+    
+    longDescription: `
+      <p>3 Delikli Dilme Jileti, endüstriyel dilme makineleri için özel olarak tasarlanmış yüksek performanslı bir kesim jiletdir. Titanyum kaplama sayesinde uzun ömürlü ve aşınmaya dayanıklıdır.</p>
+      
+      <h3>Öne Çıkan Özellikler</h3>
+      <ul>
+        <li>Sheffield çeliğinden üretilmiş</li>
+        <li>Titanyum kaplama ile ekstra dayanıklılık</li>
+        <li>HRC 60-62 sertlik değeri</li>
+        <li>3 delikli standart montaj sistemi</li>
+        <li>Farklı kalınlık seçenekleri: 0.20mm, 0.25mm, 0.30mm</li>
+      </ul>
+      
+      <h3>Kullanım Alanları</h3>
+      <p>Tekstil, kağıt, plastik film, ambalaj malzemeleri ve benzeri ince malzemelerin hassas dilme işlemlerinde kullanılır. Özellikle yüksek hızlı dilme makinelerinde üstün performans gösterir.</p>
+    `,
+    
+    images: {
+      main: {
+        src: '/images/3-delikli titanyum kaplamalı jilet.jpg',
+        alt: '3 Delikli Dilme Jileti - Titanyum Kaplamalı',
+        width: 800,
+        height: 800,
+      },
+      gallery: [
+        { src: '/images/3-delikli titanyum kaplamalı jilet.jpg', alt: 'Detay görünüm', width: 800, height: 800 },
+      ],
+      thumbnail: {
+        src: '/images/3-delikli titanyum kaplamalı jilet.jpg',
+        alt: '3 Delikli Dilme Jileti',
+        width: 400,
+        height: 400,
+      },
+    },
+    
+    specs: [
+      { label: 'Malzeme', value: 'Sheffield Çelik', icon: 'Layers', highlight: true },
+      { label: 'Kaplama', value: 'Titanyum', icon: 'Shield', highlight: true },
+      { label: 'Sertlik', value: 'HRC 60-62', icon: 'Gauge' },
+      { label: 'Kalınlık', value: '0.20mm', icon: 'Ruler' },
+      { label: 'Montaj', value: '3 Delikli Standart', icon: 'Settings' },
+    ],
+    
+    origin: {
+      brand: 'Durham Duplex',
+      country: 'England',
+      city: 'Sheffield',
+    },
+    
+    applications: [
+      { title: 'Tekstil Kesimi', icon: 'Scissors', description: 'Kumaş ve tekstil dilme' },
+      { title: 'Kağıt İşleme', icon: 'FileText', description: 'Kağıt ve karton dilme' },
+      { title: 'Film Kesimi', icon: 'Film', description: 'Plastik film ve ambalaj' },
+    ],
+    
+    benefits: [
+      {
+        title: 'Titanyum Kaplama',
+        description: 'Titanyum kaplama sayesinde standart jiletlere göre 3 kat daha uzun ömür',
+        icon: 'Shield',
+      },
+      {
+        title: 'Hassas Kesim',
+        description: 'Yüksek sertlik değeri ile temiz ve hassas kesim kalitesi',
+        icon: 'Target',
+      },
+      {
+        title: 'Uyumlu Montaj',
+        description: '3 delikli standart montaj sistemi ile kolay değişim',
+        icon: 'Settings',
+      },
+    ],
+    
+    features: [
+      'Titanyum kaplama',
+      'Sheffield çeliği',
+      'HRC 60-62 sertlik',
+      '3 delikli montaj',
+      'Farklı kalınlık seçenekleri',
+      'Uzun ömürlü',
+    ],
+    
+    certifications: ['CE'],
+    
+    relatedProductIds: ['slotted-jilet-020'],
+    
+    seo: {
+      title: '3 Delikli Dilme Jileti 0.20mm | Titanyum Kaplamalı | Alya Bıçak',
+      description: 'Sheffield çeliğinden üretilmiş titanyum kaplamalı 3 delikli dilme jileti. Tekstil, kağıt ve film kesimi için yüksek performans. Türkiye distribütörü.',
+      keywords: ['3 delikli jilet', 'dilme jileti', 'titanyum kaplama', 'sheffield çelik', 'endüstriyel jilet'],
+    },
+    
+    isActive: true,
+    isFeatured: true,
+    isNew: true,
+    inStock: true,
+    order: 1,
+  },
 ];
 
 // =============================================================================

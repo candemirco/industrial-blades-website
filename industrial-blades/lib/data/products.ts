@@ -104,10 +104,10 @@ const MANUAL_PRODUCTS: Product[] = [
     slug: '3-delikli-dilme-jileti-020mm',
     code: '3DJ-020',
     name: '3 Delikli Dilme Jileti 0.20mm',
-    description: '3 delikli dilme jileti, 0.20mm kalınlık. Endüstriyel dilme makineleri için.',
+    description: '3 delikli titanyum kaplamalı dilme jileti, 0.20mm kalınlık. Endüstriyel dilme makineleri için yüksek performanslı kesim.',
     categoryId: 'sanayi-jiletleri',
     subcategoryId: '3-delikli-dilme',
-    image: '/images/products/3-delikli-jilet.jpg',
+    image: '/images/3-delikli titanyum kaplamalı jilet.jpg',
     variants: [
       {
         id: '3dj-020-standard',
@@ -129,12 +129,12 @@ const MANUAL_PRODUCTS: Product[] = [
       },
     ],
     specifications: {
-      material: 'Sheffield Çelik',
+      material: 'Sheffield Çelik - Titanyum Kaplama',
       hardness: 'HRC 60-62',
       dimensions: 'Standart 3 delikli',
     },
-    features: ['Yüksek keskinlik', 'Uzun ömür', '3 delikli montaj'],
-    applications: ['Tekstil kesimi', 'Kağıt kesimi', 'Film kesimi'],
+    features: ['Titanyum kaplama', 'Yüksek keskinlik', 'Uzun ömür', '3 delikli montaj'],
+    applications: ['Tekstil kesimi', 'Kağıt kesimi', 'Film kesimi', 'Plastik kesimi'],
     isFeatured: true,
     isActive: true,
     order: 1,
